@@ -1,0 +1,1 @@
+export { default as navigationMenu } from './navigation-menu.vue'

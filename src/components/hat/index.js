@@ -1,0 +1,1 @@
+export { default as hat } from './hat.vue'

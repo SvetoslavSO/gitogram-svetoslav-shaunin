@@ -1,0 +1,13 @@
+.navigation-menu{
+  align-items: center;
+  justify-self: flex-end;
+  display: flex;
+}
+
+.navigation-menu__item{
+  margin-right: 4px;
+}
+
+.navigation-menu__item:last-child{
+  margin-right: 0;
+}
