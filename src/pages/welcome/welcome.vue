@@ -6,23 +6,9 @@
                     <div class="logo">
                         <icon name="logo"/>
                     </div>
-                    <ul class="navigation-menu">
-                        <li class="navigation-menu__item">
-                            <div class="icon">
-                                <icon name="home"/>
-                            </div>
-                        </li>
-                        <li class="navigation-menu__item">
-                            <div class="image">
-                                <img class="profile__photo" src="../../assets/profile-photo.svg" />
-                            </div>
-                        </li>
-                        <li class="navigation-menu__item">
-                            <div class="icon">
-                                <icon name="logout"/>
-                            </div>
-                        </li>
-                    </ul>
+                    <navigation-menu
+                        photo = "joshua.png"
+                    />
                 </div>
             </template>
             <template #content>
@@ -39,14 +25,14 @@
         </hat> 
     </div>
     <main class="maincontent">
-        <library v-for="list in lists" :key="list.id" :remarks="remarks">
+        <library date="15 may" v-for="list in lists" :key="list.id" :remarks="remarks">
             <template #application>
                 <application
-                    :author='joshua_l'
-                    authorName='joshua_l'
+                    :author='list.author'
+                    :authorName='list.authorName'
                     :appName='list.title'
-                    textDescription='JavaScript'
-                    text='framework for building interactive web applications ⚡'
+                    :textDescription='list.textDescription'
+                    :text='list.text'
                 />
             </template>
         </library>
@@ -61,6 +47,7 @@
     import remarks from './remarks.json'
     import { library } from '../../components/library'
     import { application } from '../../components/application'
+    import { navigationMenu } from '../../components/navigation-menu'
 
         export default {
         name: 'welcome',
@@ -69,7 +56,8 @@
             icon,
             storyUserItem,
             library,
-            application
+            application,
+            navigationMenu
         },
         data () {
             return {
@@ -79,19 +67,19 @@
                 lists : [ 
                     {
                         id : '1',
-                        title: 'vue.js'                            
+                        title: 'Vue.js',
+                        text:  'framework for building interactive web applications ⚡',
+                        textDescription: 'JavaScript',
+                        author:'joshua.png',
+                        authorName:'joshua_l'
                     },
                     {
                         id : '2',
-                        title: 'javascript'                            
-                    },
-                    {
-                        id : '3',
-                        title: 'html'                            
-                    },
-                    {
-                        id : '4',
-                        title: 'css'                            
+                        title: 'React.js',
+                        text:  'JavaScript library used for designing user interfaces',
+                        textDescription: 'Open source',
+                        author:'Camille.png',
+                        authorName:'Camille'
                     }
                 ]
             }

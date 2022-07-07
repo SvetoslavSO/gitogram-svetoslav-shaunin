@@ -1,17 +1,52 @@
 [
   {
     "id":"0",
-    "avatar": "../assets/josh.png",
+    "avatar": "josh.png",
     "username": "Josh"
   },
   {
     "id":"1",
-    "avatar": "https://picsum.photos/300/300",
+    "avatar": "joshua.png",
     "username": "Andrew"
   },
   {
     "id":"2",
-    "avatar": "https://picsum.photos/300/300",
+    "avatar": "Camille.png",
     "username": "Camille"
+  },
+  {
+    "id":"3",
+    "avatar": "Marselle.png",
+    "username": "Marselle"
+  },
+  {
+    "id":"4",
+    "avatar": "joshua.png",
+    "username": "Piter"
+  },
+  {
+    "id":"5",
+    "avatar": "Can.png",
+    "username": "Can"
+  },
+  {
+    "id":"6",
+    "avatar": "Iloveanime.png",
+    "username": "Iloveanime"
+  },
+  {
+    "id":"7",
+    "avatar": "Diself.png",
+    "username": "Diself"
+  },
+  {
+    "id":"8",
+    "avatar": "Gartor.png",
+    "username": "Gartor"
+  },
+  {
+    "id":"9",
+    "avatar": "Camilr.png",
+    "username": "Camilr"
   }
 ]

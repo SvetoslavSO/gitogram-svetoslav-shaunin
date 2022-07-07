@@ -1,8 +1,14 @@
 .description{
   border: solid 1px #F1F1F1;
   border-radius: 8px;
-  padding: 24px 20px;
+  padding: 17px 23px 22px 23px;
   box-shadow: 0 8px 21px -19px rgb(0 0 0 / 20%);
+}
+
+.author{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .author__name{
@@ -10,13 +16,19 @@
   font-size: 18px;
 }
 
+.author__photo{
+  width: 44px;
+  margin-right: 16px;
+}
+
 .appName{
   font-weight: bold;
   font-size: 28px;
+  margin-bottom: 11px;
 }
 
 .appDescription{
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 
 .btn{
@@ -33,6 +45,7 @@
   display: inline-flex;
   border: 2px solid #F1F1F1;
   background: rgba(27, 31, 35, 0.04);
+  width: 72px;
   cursor: pointer;
   &--active{
     border-radius: 6px 0 0 6px;
@@ -40,7 +53,7 @@
 }
 
 .btn__desc{
-  padding: 5px 11px 5px 11px;
+  padding: 4px 12px 4px 8px;
   align-self: center;
   border: 2px solid #F1F1F1;
   &--active{

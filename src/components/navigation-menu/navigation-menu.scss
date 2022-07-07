@@ -2,12 +2,21 @@
   align-items: center;
   justify-self: flex-end;
   display: flex;
+  margin-right: 1px;
 }
 
 .navigation-menu__item{
-  margin-right: 4px;
+  margin-right: 21px;
 }
 
 .navigation-menu__item:last-child{
   margin-right: 0;
+}
+
+.icon{
+  width: 32px;
+}
+
+.image{
+  width: 37px;
 }

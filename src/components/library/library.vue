@@ -7,8 +7,11 @@
         </div>
         <div class="comment">
           <comments
-                :remarks="remarks"
+              :remarks="remarks"
             />
+        </div>
+        <div class="date">
+          {{ date }}
         </div>
       </div>
     </div>
@@ -26,7 +29,11 @@
       remarks: { 
           type: Array,
           required: true
-        }
+        },
+      date: {
+        type: String,
+        required: true
+      }
     }
   }
 </script>

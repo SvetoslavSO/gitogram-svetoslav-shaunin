@@ -26,7 +26,11 @@
       remarks: { 
           type: Array,
           required: true
-        }
+        },
+      date:{
+        type: String,
+        required: true
+      }
     },
     data () {
       return {
@@ -40,3 +44,5 @@
     }
   }
 </script>
+
+<style lang="scss" scoped src="./comments.scss"></style>

@@ -6,6 +6,16 @@ button{
 
 .img{
   border-radius: 50%;
-  width: 100px;
-  margin-bottom: 30px;
+  width: 85px;
+  margin-bottom: 13px;
+  padding: 3px;
+  box-shadow: 0 0 0 2px #A6328D;
+}
+
+.img:hover{
+  box-shadow: 0 0 0 2px transparent;
+}
+
+.username{
+  font-size: 12px;
 }
