@@ -1,37 +1,28 @@
 <template>
-  <div class="c-library">
-    <div class="x-container">
-      <div class="lib-container">
-        <div class="application">
-          <slot name="application" />
-        </div>
-        <div class="comment">
-          <comments
-              :remarks="remarks"
-            />
-        </div>
-        <div class="date">
-          {{ date }}
-        </div>
+    <div class="lib-container">
+      <div class="application">
+        <Expansion  
+          :lists="lists"
+          :remarks="remarks"
+        />
       </div>
     </div>
-  </div>
 </template>
 
 <script>
-  import { comments } from '@/components/comments'
+  import { Expansion } from '@/components/Expansion'
 
   export default {
     components : {
-      comments
+      Expansion
     },
     props:{
       remarks: { 
-          type: Array,
-          required: true
-        },
-      date: {
-        type: String,
+        type: Array,
+        required: true
+      },
+      lists :{
+        type: Array,
         required: true
       }
     }

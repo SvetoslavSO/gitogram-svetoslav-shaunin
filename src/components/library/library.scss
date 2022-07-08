@@ -1,21 +1,4 @@
 .lib-container{
-  width: 82%;
-  align-self: center;
-}
-
-.application{
-  margin-bottom: 20px;
-}
-
-.comment{
-  margin-left: 3px;
-  margin-bottom: 17px;
-}
-
-.date{
-  line-height: 1;
-  margin-bottom: 30px;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.4);
+  max-width: 980px;
+  margin: 0 auto;
 }

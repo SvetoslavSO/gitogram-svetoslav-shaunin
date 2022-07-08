@@ -1,5 +1,5 @@
 <template>
-  <div class="c-hat">
+  <div class="c-header">
     <div class="x-container">
       <div class="navigation">
         <slot name="navigation" />
@@ -10,4 +10,4 @@
     </div>
   </div>
 </template>
-<style lang="scss" src="./hat.scss" scoped></style>
+<style lang="scss" src="./Header.scss" scoped></style>

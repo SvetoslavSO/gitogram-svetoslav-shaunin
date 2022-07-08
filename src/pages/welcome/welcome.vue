@@ -1,6 +1,6 @@
 <template>
     <div class="hat">
-        <hat>
+        <Header>
             <template #navigation>
                 <div class="header">
                     <div class="logo">
@@ -22,41 +22,30 @@
                     </li>
                 </ul>
             </template>
-        </hat> 
+        </Header> 
     </div>
     <main class="maincontent">
-        <library date="15 may" v-for="list in lists" :key="list.id" :remarks="remarks">
-            <template #application>
-                <application
-                    :author='list.author'
-                    :authorName='list.authorName'
-                    :appName='list.title'
-                    :textDescription='list.textDescription'
-                    :text='list.text'
-                />
-            </template>
-        </library>
+        <library :remarks="remarks" :lists="lists" />
     </main>
 </template>
 
 <script>
-    import { hat } from '../../components/hat'
+    import { Header } from '../../components/Header'
     import { icon } from '../../icons'
     import { storyUserItem } from '../../components/storyUserItem'
     import stories from './data.json'
     import remarks from './remarks.json'
+    import lists from './lists.json'
     import { library } from '../../components/library'
-    import { application } from '../../components/application'
     import { navigationMenu } from '../../components/navigation-menu'
 
         export default {
         name: 'welcome',
         components:{ 
-            hat,
+            Header,
             icon,
             storyUserItem,
             library,
-            application,
             navigationMenu
         },
         data () {
@@ -64,24 +53,7 @@
                 stories,
                 remarks,
                 shown: false,
-                lists : [ 
-                    {
-                        id : '1',
-                        title: 'Vue.js',
-                        text:  'framework for building interactive web applications ⚡',
-                        textDescription: 'JavaScript',
-                        author:'joshua.png',
-                        authorName:'joshua_l'
-                    },
-                    {
-                        id : '2',
-                        title: 'React.js',
-                        text:  'JavaScript library used for designing user interfaces',
-                        textDescription: 'Open source',
-                        author:'Camille.png',
-                        authorName:'Camille'
-                    }
-                ]
+                lists
             }
         }
     }

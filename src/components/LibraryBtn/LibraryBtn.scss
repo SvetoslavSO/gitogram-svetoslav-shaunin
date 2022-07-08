@@ -1,0 +1,35 @@
+.c-btn{
+  background: transparent;
+  align-items: center;
+  display: inline-flex;
+  border: 2px solid #F1F1F1;
+  background: rgba(27, 31, 35, 0.04);
+  width: 72px;
+  cursor: pointer;
+  &--active{
+    border-radius: 6px 0 0 6px;
+  }
+}
+
+.btn__desc{
+  padding: 4px 12px 4px 8px;
+  align-self: center;
+  border: 2px solid #F1F1F1;
+  &--active{
+    border-radius: 0 6px 6px 0;
+  }
+}
+
+.btns__list{
+  &:first-child{
+    border-radius: 5px;
+  }
+}
+
+.btn{
+  display: inline-flex;
+}
+
+.icon{
+  margin-right: 5px;
+}
