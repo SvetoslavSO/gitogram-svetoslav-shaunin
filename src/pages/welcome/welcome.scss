@@ -1,8 +1,5 @@
 .stories-list{
   white-space: nowrap;
-  @media screen and (max-width:1200px){
-    overflow-y: hidden;
-  }
 }
 
 .stories-list::-webkit-scrollbar{
