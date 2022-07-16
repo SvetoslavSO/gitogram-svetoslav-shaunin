@@ -1,0 +1,38 @@
+.story{
+  display: flex;
+  flex-direction: column;
+  max-width: 375px;
+  height: 500px;
+  &__main-content{
+    background: #FFF;
+    flex:1;
+    max-height: 350px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+      width: 5px;
+      height: 5px;
+      background-color: #AFAFAF;
+    };
+    &::-webkit-scrollbar-track{
+      background: #fff;
+    };
+    &::-webkit-scrollbar-thumb{
+      border: 3px solid #AFAFAF;
+      border-radius: 5px;
+    }
+  }
+  &__footer{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0px;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+    border-radius: 0px 0px 7px 7px;
+  }
+  &__header{
+    background: rgba(0, 0, 0, 0.0001);
+    border: 1px solid rgba(0, 0, 0, 0.0001);
+    border-bottom: 1px solid #DEDEDE;
+    border-radius: 7px 7px 0px 0px;
+  }
+}

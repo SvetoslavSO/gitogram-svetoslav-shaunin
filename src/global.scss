@@ -53,14 +53,3 @@ svg{
   background: transparent;
   cursor: pointer;
 }
-
-@mixin tablets {
-  @media screen and (max-width:1200px){
-    @content;
-  }  
-}
-@mixin phones {
-  @media screen and (max-width:720px) { 
-    @content;    
-  }
-}

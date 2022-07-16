@@ -27,6 +27,7 @@
     <main class="maincontent">
         <library :remarks="remarks" :lists="lists" />
     </main>
+    <ServerRequest />
 </template>
 
 <script>
@@ -38,6 +39,7 @@
     import lists from './lists.json'
     import { library } from '../../components/library'
     import { navigationMenu } from '../../components/navigation-menu'
+    import { ServerRequest } from '../../components/ServerRequest'
 
         export default {
         name: 'welcome',
@@ -46,7 +48,8 @@
             icon,
             storyUserItem,
             library,
-            navigationMenu
+            navigationMenu,
+            ServerRequest
         },
         data () {
             return {
