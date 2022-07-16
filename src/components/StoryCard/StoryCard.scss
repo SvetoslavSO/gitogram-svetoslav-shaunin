@@ -4,7 +4,7 @@
   max-width: 375px;
   height: 500px;
   &__main-content{
-    background: #FFF;
+    background: #FCFCFC;
     flex:1;
     max-height: 350px;
     overflow-y: scroll;
@@ -14,7 +14,7 @@
       background-color: #AFAFAF;
     };
     &::-webkit-scrollbar-track{
-      background: #fff;
+      background: #FCFCFC;
     };
     &::-webkit-scrollbar-thumb{
       border: 3px solid #AFAFAF;
