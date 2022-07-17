@@ -13,8 +13,8 @@
 </template>
 
 <script>
-  import { comment } from '@/components/comment'
-  import { toggler } from '@/components/toggler'
+  import { comment } from '../../components/comment'
+  import { toggler } from '../../components/toggler'
 
   export default {
     name: 'Comments',

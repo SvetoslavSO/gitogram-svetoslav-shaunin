@@ -1,1 +1,1 @@
-export { default as LibraryBtn } from './LibraruBtn.vue'
+export { default as LibraryBtn } from './LibraryBtn.vue'
