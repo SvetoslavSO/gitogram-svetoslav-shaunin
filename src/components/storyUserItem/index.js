@@ -1,1 +1,1 @@
-export { default as storyUserItem } from './storyUSerItem.vue'
+export { default as storyUserItem } from './storyUserItem.vue'

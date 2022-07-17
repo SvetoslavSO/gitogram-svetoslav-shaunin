@@ -1,16 +1,14 @@
-import StoryBtn from "../../components/StoryBtn/StoryBtn.vue"
-import StoryHeader from "../../components/StoryHeader/StoryHeader.vue"
+import Profile from "../../components/Profile/Profile.vue"
 
 export default{
   title: "profile",
-  components: { StoryBtn, StoryHeader }
+  components: { Profile }
 }
 
 export const defaultView = () => ({
-  components: { StoryBtn, StoryHeader },
+  components: { Profile },
   template: `
-    <StoryHeader />
-    <StoryBtn />
+    <Profile author="Andrew.png" authorName="Andrew"/>
   `
 });
 

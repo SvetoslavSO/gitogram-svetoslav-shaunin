@@ -22,9 +22,9 @@
 </template>
 
 <script>
-  import { Profile } from '@/components/Profile'
-  import { LibraryBtn } from '@/components/LibraryBtn'
-  import { comments } from '@/components/comments'
+  import { Profile } from '../../components/Profile'
+  import { LibraryBtn } from '../../components/LibraryBtn'
+  import { comments } from '../../components/comments'
 
   export default {
     name: 'Expansion',

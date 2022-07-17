@@ -22,4 +22,4 @@
   }
 </script>
 
-<style lang="scss" scoped src="./storyUSerItem.scss"></style>
+<style lang="scss" scoped src="./storyUserItem.scss"></style>

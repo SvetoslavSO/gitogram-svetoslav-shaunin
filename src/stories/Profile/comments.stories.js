@@ -1,4 +1,5 @@
 import comments from "../../components/comments/comments.vue"
+import remarks from '../../pages/welcome/remarks.json'
 
 export default{
   title: "reviews",
@@ -7,8 +8,13 @@ export default{
 
 export const com = () => ({
   components: { comments },
+  data () {
+    return {
+      remarks
+    }
+  },
   template: `
-    <comments />
+    <comments :remarks="remarks" />
   `
 });
 

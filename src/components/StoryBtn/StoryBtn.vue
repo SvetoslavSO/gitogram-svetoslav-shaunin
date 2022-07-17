@@ -18,13 +18,7 @@
         this.followed = !this.followed
         this.$emit('onFollow', this.followed)
       }
-    },
-    /*mounted () {
-      this.$refs.followBtn.addEventListener('click', this.follow)
-    },
-    beforeUnmount () {
-      this.$refs.followBtn.removeEventListener('click', this.follow)
-    }*/
+    }
   }
 </script>
 
