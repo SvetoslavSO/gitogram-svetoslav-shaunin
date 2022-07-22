@@ -8,7 +8,7 @@ export default{
 export const card = () => ({
   components: { StoryCard },
   template: `
-    <StoryCard />
+    <StoryCard v-bind:active="true" author="joshua.png" authorName="joshua_l"/>
   `
 });
 

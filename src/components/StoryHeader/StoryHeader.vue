@@ -1,8 +1,8 @@
 <template>
   <div class="story-header">
-    <ProgressLine />
+    <ProgressLine v-bind:active="active" />
     <div class="story-profile">
-      <Profile author="joshua.png" authorName="joshua_l" />
+      <Profile :author="author" :authorName="authorName"/>
     </div>
   </div>
 </template>
@@ -16,6 +16,20 @@ export default {
   components:{
     Profile,
     ProgressLine
+  },
+  props: {
+    author:{
+      type: String,
+      required:true
+    },
+    authorName:{
+      type: String,
+      required:true
+    },
+    active:{
+      type:Boolean,
+      required: true
+    }
   }
 }
 </script>

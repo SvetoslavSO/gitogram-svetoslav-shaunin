@@ -10,30 +10,42 @@
           dark
         />
       </li>
+      <pre>{{trendings}}</pre>
     </ul>
+    <pre></pre>
   </div>
 </template>
 
 <script>
-import * as api from '../../api'
-import { RequestTemplate } from '../../components/RequestTemplate'
+import { RequestTemplate } from '../../components/RequestTemplate';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'ServerRequest',
   components: { RequestTemplate },
-  data () {
-    return {
-      items: []
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.user.data
+    })
+  },
+  methods: {
+    ...mapActions({
+      fetchTrendings: "user/fetchTrendings"
+    }),
+    getStoryData(obj) {
+      return {
+        id: obj.id,
+        userAvatar: obj.owner?.avatar.url,
+        username: obj.owner?.login,
+        content: obj.readme
+      }
     }
   },
-  methods: {},
-  async created () {
-    try {
-      const { data } = await api.trendings.getTrendings()
-      this.items = data.items;
-    } catch (error) {
-      console.log(error)
-    }
+  async created() {
+    await this.fetchTrendings();
   }
 }
 </script>

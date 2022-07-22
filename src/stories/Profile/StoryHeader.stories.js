@@ -8,7 +8,7 @@ export default{
 export const StoryHead = () => ({
   components: { StoryHeader },
   template: `
-    <StoryHeader />
+    <StoryHeader v-bind:active="false" author="joshua.png" authorName="joshua_l"/>
   `
 });
 

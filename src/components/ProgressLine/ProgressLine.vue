@@ -7,9 +7,10 @@
 <script>
 export default {
   name: 'ProgressLine',
-  data () {
-    return {
-      active: false
+  props:{
+    active:{
+      type: Boolean,
+      required: true
     }
   },
   emits:['onFinish'],
@@ -19,9 +20,6 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(()=>{
-      this.active = true
-    })
     this.$refs.progressCurrent.addEventListener('transitionend', this.emitOnFinish);
   },
   beforeUnmount () {

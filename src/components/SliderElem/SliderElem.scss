@@ -1,0 +1,46 @@
+.left-arrow{
+  cursor: pointer;
+  display: inline-flex;
+  margin-right: 400px;
+  background: #fff;
+  height: 44px;
+  width: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: solid black 3px;
+  &:hover{
+    color: #31AE54;
+  }
+}
+
+.card-content{
+  display: inline-block;
+  position: relative;
+}
+
+.arrows{
+  text-align: baseline;
+  position: absolute;
+  left: -40px;
+}
+
+.right-arrow{
+  cursor: pointer;
+  height: 44px;
+  width: 44px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: solid black 3px;
+  &:hover{
+    color: #31AE54;
+  }
+}
+
+.card{
+  display: flex;
+  align-items: center;
+}

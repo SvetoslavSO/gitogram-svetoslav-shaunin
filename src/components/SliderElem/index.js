@@ -1,0 +1,1 @@
+export { default as SliderElem } from './SliderElem.vue'

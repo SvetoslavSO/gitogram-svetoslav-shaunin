@@ -1,15 +1,10 @@
 <template>
-  <welcome />
+  <router-view />
 </template>
 
 <script>
-import { welcome } from './pages/welcome'
-
 export default {
-  name: 'App',
-  components: {
-    welcome
-  }
+  name: 'App'
 }
 </script>
 
