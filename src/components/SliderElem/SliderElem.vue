@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <StoryCard active :author="author" :authorName="authorName"/>
+      <StoryCard active :obj="obj"/>
     </div>
     <div class="arrows">
       <div class="left-arrow">
@@ -25,13 +25,9 @@ export default {
     icon
   },
   props: {
-    author:{
-      type: String,
-      required:true
-    },
-    authorName:{
-      type: String,
-      required:true
+    obj:{
+      type: Object,
+      required: true
     },
     active:{
       type:Boolean,

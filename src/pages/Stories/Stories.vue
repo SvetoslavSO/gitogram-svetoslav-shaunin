@@ -3,12 +3,12 @@
     <div class="x-container">
       <button class="logo">
         <div class="logo-icon">
-          <icon name="logo">
+          <icon name="logo"/>
         </div>
       </button>
       <button class="close-btn">
         <div class="close-icon">
-          <icon name="close">
+          <icon name="close"/>
         </div>
       </button>
     </div>
@@ -17,3 +17,16 @@
     <Slide />
   </div>
 </template>
+
+<script>
+  import { Slide } from '../../components/Slide'
+  import { icon } from '../../icons'
+
+  export default {
+  name: 'Stories',
+    components:{ 
+      Slide,
+      icon
+    }
+  }
+</script>

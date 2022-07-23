@@ -15,7 +15,7 @@ export default {
   },
   emits:['onFinish'],
   methods:{
-    emitOnFinish() {
+    emitOnFinish () {
       this.$emit('onFinish')
     }
   },

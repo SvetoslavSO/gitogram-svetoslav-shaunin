@@ -10,7 +10,7 @@
           dark
         />
       </li>
-      <pre>{{trendings}}</pre>
+      <pre>{{user}}</pre>
     </ul>
     <pre></pre>
   </div>
@@ -23,7 +23,7 @@ import { mapState, mapActions } from 'vuex';
 export default {
   name: 'ServerRequest',
   components: { RequestTemplate },
-  data() {
+  data () {
     return {}
   },
   computed: {
@@ -33,9 +33,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchTrendings: "user/fetchTrendings"
+      fetchTrendings: 'user/fetchTrendings'
     }),
-    getStoryData(obj) {
+    getStoryData (obj) {
       return {
         id: obj.id,
         userAvatar: obj.owner?.avatar.url,
@@ -44,7 +44,7 @@ export default {
       }
     }
   },
-  async created() {
+  async created () {
     await this.fetchTrendings();
   }
 }

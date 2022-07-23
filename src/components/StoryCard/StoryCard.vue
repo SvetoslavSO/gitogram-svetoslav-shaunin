@@ -1,10 +1,10 @@
 <template>
   <div class="story">
     <header class="story__header">
-      <StoryHeader v-bind:active="active" :author="author" :authorName="authorName"/>
+      <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username"/>
     </header>
     <div class="story__main-content">
-      <ServerRequest v-if="active"/>
+      <!--<RequestTemplate />-->
       <Placeholder v-if="!active" :paragraphs="4"/>
     </div>
     <footer class="story__footer">
@@ -16,25 +16,21 @@
 <script>
 import { StoryBtn } from '../../components/StoryBtn'
 import { StoryHeader } from '../../components/StoryHeader'
-import { ServerRequest } from '../../components/ServerRequest'
 import { Placeholder } from '../../components/Placeholder'
+// import { RequestTemplate } from '../../components/RequestTemplate'
 
 export default {
   name: 'StoryCard',
   components:{
     StoryHeader,
     StoryBtn,
-    ServerRequest,
+    // RequestTemplate,
     Placeholder
   },
   props: {
-    author:{
-      type: String,
-      required:true
-    },
-    authorName:{
-      type: String,
-      required:true
+    obj:{
+      type: Object,
+      required: true
     },
     active:{
       type:Boolean,

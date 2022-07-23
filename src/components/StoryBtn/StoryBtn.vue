@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name:"StoryBtn",
+    name:'StoryBtn',
     data () {
       return {
         followed :  false

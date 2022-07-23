@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Profile from "../../components/Profile/Profile.vue"
-import ProgressLine from "../../components/ProgressLine/ProgressLine.vue"
+import Profile from '../../components/Profile/Profile.vue'
+import ProgressLine from '../../components/ProgressLine/ProgressLine.vue'
 
 export default {
-  name:  "StoryHeader",
+  name:  'StoryHeader',
   components:{
     Profile,
     ProgressLine

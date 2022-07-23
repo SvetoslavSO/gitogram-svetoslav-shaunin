@@ -15,10 +15,10 @@ export default
     }
   },
   actions:{
-    async fetchTrendings({ state, commit, rootState }){
+    async fetchTrendings ({ state, commit, rootState }) {
       try {
         const { data } = await api.trendings.getTrendings()
-        commit("SET_TRENDINGS", data.items)
+        commit('SET_TRENDINGS', data.items)
       } catch (e) {
         console.log(e);
         throw e;
