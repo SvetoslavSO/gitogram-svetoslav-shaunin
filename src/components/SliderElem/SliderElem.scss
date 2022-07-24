@@ -1,7 +1,7 @@
 .left-arrow{
+  margin-right: 10px;
   cursor: pointer;
   display: inline-flex;
-  margin-right: 400px;
   background: #fff;
   height: 44px;
   width: 44px;
@@ -15,8 +15,10 @@
 }
 
 .card-content{
-  display: inline-block;
+  display: inline-flex;
   position: relative;
+  align-items: center;
+  margin: 10px;
 }
 
 .arrows{
@@ -26,6 +28,7 @@
 }
 
 .right-arrow{
+  margin-left: 10px;
   cursor: pointer;
   height: 44px;
   width: 44px;
@@ -43,4 +46,9 @@
 .card{
   display: flex;
   align-items: center;
+  transform: scale(0.8);
+}
+
+.card.active{
+  transform: scale(1);
 }

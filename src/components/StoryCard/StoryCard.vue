@@ -6,6 +6,7 @@
     <div class="story__main-content">
       <!--<RequestTemplate />-->
       <Placeholder v-if="!active" :paragraphs="4"/>
+      <LoadingComponent v-else-if="loading"/>
     </div>
     <footer class="story__footer">
       <StoryBtn />
@@ -17,6 +18,7 @@
 import { StoryBtn } from '../../components/StoryBtn'
 import { StoryHeader } from '../../components/StoryHeader'
 import { Placeholder } from '../../components/Placeholder'
+import { LoadingComponent } from '../../components/LoadingComponent'
 // import { RequestTemplate } from '../../components/RequestTemplate'
 
 export default {
@@ -25,7 +27,8 @@ export default {
     StoryHeader,
     StoryBtn,
     // RequestTemplate,
-    Placeholder
+    Placeholder,
+    LoadingComponent
   },
   props: {
     obj:{
@@ -33,6 +36,10 @@ export default {
       required: true
     },
     active:{
+      type:Boolean,
+      required: true
+    },
+    loading:{
       type:Boolean,
       required: true
     }

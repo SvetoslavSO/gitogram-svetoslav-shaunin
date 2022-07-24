@@ -1,0 +1,13 @@
+.stories-list{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -200px;
+  transition: .4s;
+}
+
+.stories-container{
+  height: 660px;
+  position: relative;
+}

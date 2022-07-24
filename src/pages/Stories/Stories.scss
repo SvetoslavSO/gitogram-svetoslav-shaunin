@@ -1,0 +1,29 @@
+.slider-page{
+  background: #000;
+}
+
+.wrapper{
+  background: #000;
+}
+
+.stories-header{
+  display: flex;
+  padding: 100px;
+}
+
+.x-container{
+  flex-direction: unset;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.logo-icon{
+  color: #fff;
+  width: 200px;
+}
+
+button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

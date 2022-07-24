@@ -1,0 +1,20 @@
+.loading{
+  &-icon{
+    animation: circle 1s infinite;
+  }
+  &-window{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+}
+
+@keyframes circle {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}

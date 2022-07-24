@@ -1,13 +1,15 @@
 <template>
-  <ul class="stories-list">
-    <li class="stories-item" v-for="user in users" :key="user.id">
-      <SliderElem
-       :obj="getStoryData(user)"
-       :active="true"
-      />
-    </li>
-  </ul>
-  <pre>{{users}}</pre>
+  <div class="slider-container">
+    <ul class="stories-list">
+      <li class="stories-item" v-for="user in users" :key="user.id">
+        <SliderElem
+         :obj="getStoryData(user)"
+         :active="false"
+         :loading="true"
+        />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -42,3 +44,5 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" src="./Slide.scss" scoped></style>

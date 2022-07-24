@@ -1,20 +1,24 @@
 <template>
-  <header class="stories-header">
-    <div class="x-container">
-      <button class="logo">
-        <div class="logo-icon">
-          <icon name="logo"/>
+  <div class="wrapper">
+    <div class="slider-page">
+      <header class="stories-header">
+        <div class="x-container">
+          <button class="logo">
+            <div class="logo-icon">
+              <icon name="logo"/>
+            </div>
+          </button>
+          <button class="close-btn">
+            <div class="close-icon">
+              <icon name="close"/>
+            </div>
+          </button>
         </div>
-      </button>
-      <button class="close-btn">
-        <div class="close-icon">
-          <icon name="close"/>
-        </div>
-      </button>
+      </header>
+      <div class="content">
+        <Slide />
+      </div>
     </div>
-  </header>
-  <div class="content">
-    <Slide />
   </div>
 </template>
 
@@ -30,3 +34,5 @@
     }
   }
 </script>
+
+<style lang="scss" src="./Stories.scss" scoped></style>

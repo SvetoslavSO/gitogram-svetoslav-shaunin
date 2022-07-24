@@ -7,7 +7,7 @@
       </li>
       <li class="navigation-menu__item">
           <div class="image">
-              <img class="profile__photo" :src="require(`../../assets/${photo}`)" />
+              <img class="profile__photo" :src="photo" />
           </div>
       </li>
       <li class="navigation-menu__item">

@@ -1,15 +1,17 @@
 <template>
-  <div class="card">
-    <div class="card-content">
-      <StoryCard active :obj="obj"/>
-    </div>
-    <div class="arrows">
-      <div class="left-arrow">
-        <icon name='leftArrow'/>
-      </div>
-      <div class="right-arrow">
-        <icon name='rightArrow'/>
-      </div>
+  <div class="card" v-bind:class="{active}">
+    <div class="card-content" >
+      <template v-if="active">
+        <div class="left-arrow">
+            <icon name='leftArrow'/>
+        </div>
+      </template>
+      <StoryCard v-bind:active="active" :obj="obj" :loading="loading"/>
+      <template v-if="active">
+        <div class="right-arrow" >
+          <icon name='rightArrow'/>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -30,6 +32,10 @@ export default {
       required: true
     },
     active:{
+      type:Boolean,
+      required: true
+    },
+    loading:{
       type:Boolean,
       required: true
     }
