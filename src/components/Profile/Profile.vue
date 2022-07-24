@@ -1,7 +1,7 @@
 <template>
   <div class="author">
     <div class="author__photo">
-      <img class="img" :src="require(`${author}`)" alt="" />
+      <img class="img" :src="author" alt="" />
     </div>
     <div class="author__name">{{ authorName }}</div>
   </div>
