@@ -28,12 +28,12 @@ export default {
   },
   computed: {
     ...mapState({
-      user: (state) => state.user.data
+      user: (state) => state.users.data
     })
   },
   methods: {
     ...mapActions({
-      fetchTrendings: 'user/fetchTrendings'
+      fetchTrendings: 'users/fetchTrendings'
     }),
     getStoryData (obj) {
       return {
