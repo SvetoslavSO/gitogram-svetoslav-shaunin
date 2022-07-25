@@ -7,6 +7,11 @@
   transition: .4s;
 }
 
+.stories-item{
+  display: flex;
+  width: 540px;
+}
+
 .stories-container{
   height: 660px;
   position: relative;

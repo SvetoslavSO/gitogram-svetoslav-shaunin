@@ -1,22 +1,18 @@
 <template>
   <button class="c-story-user-item" @click="$emit('onPress')">
     <div class="avatar">
-      <img :src="avatar" class="img"  alt="username avatar" />
+      <img :src="obj.userAvatar" class="img"  alt="username avatar" />
     </div>
-    <div class="username">{{ username }}</div>
+    <div class="username">{{ obj.username }}</div>
   </button>
 </template>
 
 <script>
   export default {
     props:{
-      avatar: {
-        type : String,
-        required : true
-      },
-      username: {
-        type : String,
-        required : true
+      obj:{
+        type: Object,
+        required: true
       }
     }
   }

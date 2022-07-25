@@ -1,11 +1,11 @@
 <template>
   <div class="story">
     <header class="story__header">
-      <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username"/>
+      <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username" @onFinish="$emit('onFinish')"/>
     </header>
     <div class="story__main-content">
-      <!--<RequestTemplate />-->
-      <Placeholder v-if="!active" :paragraphs="4"/>
+      <div v-if="active" v-html="obj.content"></div>
+      <Placeholder v-else-if="!active" :paragraphs="4"/>
       <LoadingComponent v-else-if="loading"/>
     </div>
     <footer class="story__footer">
@@ -19,30 +19,20 @@ import { StoryBtn } from '../../components/StoryBtn'
 import { StoryHeader } from '../../components/StoryHeader'
 import { Placeholder } from '../../components/Placeholder'
 import { LoadingComponent } from '../../components/LoadingComponent'
-// import { RequestTemplate } from '../../components/RequestTemplate'
 
 export default {
   name: 'StoryCard',
   components:{
     StoryHeader,
     StoryBtn,
-    // RequestTemplate,
     Placeholder,
     LoadingComponent
   },
+  emits: ['onFinish'],
   props: {
-    obj:{
-      type: Object,
-      required: true
-    },
-    active:{
-      type:Boolean,
-      required: true
-    },
-    loading:{
-      type:Boolean,
-      required: true
-    }
+    obj: Object,
+    active:Boolean,
+    loading:Boolean
   }
 }
 </script>

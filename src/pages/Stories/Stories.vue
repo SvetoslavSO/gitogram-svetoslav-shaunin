@@ -16,7 +16,7 @@
         </div>
       </header>
       <div class="content">
-        <Slide />
+        <Slide :initialSlide="Number($route.params.initialSlide)" />
       </div>
     </div>
   </div>

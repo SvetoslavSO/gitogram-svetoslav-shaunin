@@ -2,15 +2,19 @@
   <div class="card" v-bind:class="{active}">
     <div class="card-content" >
       <template v-if="active">
-        <div class="left-arrow">
-            <icon name='leftArrow'/>
-        </div>
+        <button v-if="btnsShown.includes('prev')" class="btn btn-prev" @click="$emit('onPrevSlide')">
+          <div class="left-arrow">
+              <icon name='leftArrow'/>
+          </div>
+        </button>
       </template>
-      <StoryCard v-bind:active="active" :obj="obj" :loading="loading"/>
+      <StoryCard v-bind:active="active" :obj="obj" :loading="loading" @onFinish="$emit('onProgressFinish')"/>
       <template v-if="active">
-        <div class="right-arrow" >
-          <icon name='rightArrow'/>
-        </div>
+        <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
+          <div class="right-arrow" >
+            <icon name='rightArrow'/>
+          </div>
+        </button>
       </template>
     </div>
   </div>
@@ -26,6 +30,7 @@ export default {
     StoryCard,
     icon
   },
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
   props: {
     obj:{
       type: Object,
@@ -38,6 +43,13 @@ export default {
     loading:{
       type:Boolean,
       required: true
+    },
+    btnsShown: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator (value) {
+        return value.every(item => item === 'next' || item === 'prev')
+      }
     }
   }
 }

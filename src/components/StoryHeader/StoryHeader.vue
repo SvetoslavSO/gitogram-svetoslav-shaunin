@@ -1,6 +1,6 @@
 <template>
   <div class="story-header">
-    <ProgressLine v-bind:active="active" />
+    <ProgressLine v-bind:active="active" @onFinish="$emit('onFinish')"/>
     <div class="story-profile">
       <Profile :author="author" :authorName="authorName"/>
     </div>
@@ -17,6 +17,7 @@ export default {
     Profile,
     ProgressLine
   },
+  emits: ['onFinish'],
   props: {
     author:{
       type: String,

@@ -8,6 +8,7 @@ export default [
   },
   {
     path: '/Stories',
+    name: 'Stories',
     component: Stories
   }
 ]
