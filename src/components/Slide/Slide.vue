@@ -9,7 +9,7 @@
           :btnsShown="activeBtns"
           @onNextSlide="handleSlide(ndx + 1), next()"
           @onPrevSlide="handleSlide(ndx - 1), prev()"
-          @onProgressFinish="handleSlide(ndx + 1), progress()"
+          @onProgressFinish=" progress(ndx), handleSlide(ndx + 1)"
         />
       </li>
     </ul>
@@ -56,8 +56,9 @@ export default {
     next () {
       console.log('next')
     },
-    progress () {
+    progress (ndx) {
       console.log('progress')
+      console.log(this.slideNdx === ndx)
     },
     async fetchReadmeForActiveSlide () {
       const { id, owner, name } = this.users[this.slideNdx];
