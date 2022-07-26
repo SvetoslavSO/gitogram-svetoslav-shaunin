@@ -7,8 +7,8 @@ export default [
     component: welcome
   },
   {
-    path: '/Stories',
-    name: 'Stories',
+    path: '/stories',
+    name: 'stories',
     component: Stories
   }
 ]

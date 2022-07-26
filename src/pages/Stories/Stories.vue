@@ -10,13 +10,13 @@
           </button>
           <button class="close-btn">
             <div class="close-icon">
-              <icon name="close"/>
+              <icon name="close" @click="$router.push('/')"/>
             </div>
           </button>
         </div>
       </header>
       <div class="content">
-        <Slide :initialSlide="Number($route.params.initialSlide)" />
+        <Slide :initialSlide="Number(!isNaN($route.params.initialSlide) ? $route.params.initialSlide : 0)" />
       </div>
     </div>
   </div>
@@ -25,7 +25,6 @@
 <script>
   import { Slide } from '../../components/Slide'
   import { icon } from '../../icons'
-
   export default {
   name: 'Stories',
     components:{ 

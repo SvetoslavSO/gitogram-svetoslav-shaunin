@@ -7,9 +7,9 @@
           :active="slideNdx == ndx"
           :loading="slideNdx == ndx && loading"
           :btnsShown="activeBtns"
-          @onNextSlide="handleSlide(ndx + 1)"
-          @onPrevSlide="handleSlide(ndx - 1)"
-          @onProgressFinish="handleSlide(ndx + 1)"
+          @onNextSlide="handleSlide(ndx + 1), next()"
+          @onPrevSlide="handleSlide(ndx - 1), prev()"
+          @onProgressFinish="handleSlide(ndx + 1), progress()"
         />
       </li>
     </ul>
@@ -48,9 +48,17 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchTrendings: 'users/fetchTrendings',
       fetchReadme: 'users/fetchReadme'
     }),
+    prev () {
+      console.log('prev')
+    },
+    next () {
+      console.log('next')
+    },
+    progress () {
+      console.log('progress')
+    },
     async fetchReadmeForActiveSlide () {
       const { id, owner, name } = this.users[this.slideNdx];
       await this.fetchReadme({ id, owner: owner.login, repo: name })
@@ -68,6 +76,7 @@ export default {
       const item = this.$refs.item[slideNdx];
       const slideWidth = parseInt(getComputedStyle(item).getPropertyValue('width'), 10);
       this.slideNdx = slideNdx;
+      console.log(this.slideNdx)
       this.sliderPosition = -(slideWidth * slideNdx);
       slider.style.transform = `translateX(${this.sliderPosition}px)`
     },
@@ -91,10 +100,10 @@ export default {
   },
   async mounted () {
     if (this.initialSlide) {
-      const ndx = this.users.findIndex(item => item.id === this.initialSlide);
-      await this.handleSlide(ndx)
+      this.slideNdx = this.initialSlide;
+      // const ndx = this.users.findIndex(item => item.id === this.initialSlide);
+      await this.handleSlide(this.slideNdx)
     }
-    await this.fetchTrendings();
     await this.loadReadme()
   }
 }

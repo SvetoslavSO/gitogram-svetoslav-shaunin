@@ -13,10 +13,10 @@
             </template>
             <template #content>
                 <ul class="stories-list">
-                    <li class="stories-item" v-for="user in users" :key="user.id" ref="item">
+                    <li class="stories-item" v-for="(user,index) in users" :key="user.id" ref="item">
                         <story-user-item
                             :obj="getStoryData(user)"
-                            @onPress="$router.push({name: 'Stories', params: {initialSlide: id}})"
+                            @onPress="$router.push({name: 'stories', params: {initialSlide: index}})"
                         />
                     </li>
                 </ul>
@@ -37,7 +37,7 @@
     import lists from './lists.json'
     import { library } from '../../components/library'
     import { navigationMenu } from '../../components/navigation-menu'
-    import { mapState, mapActions } from 'vuex';
+    import { mapState } from 'vuex';
 
     export default {
         name: 'welcome',
@@ -54,9 +54,6 @@
             })
         },
         methods: {
-          ...mapActions({
-            fetchTrendings: 'users/fetchTrendings'
-          }),
           getStoryData (obj) {
             return {
               id: obj.id,
@@ -73,9 +70,6 @@
                 shown: false,
                 lists
             }
-        },
-        async created () {
-            await this.fetchTrendings();
         }
     }
 </script>

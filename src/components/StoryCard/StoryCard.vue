@@ -4,9 +4,9 @@
       <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username" @onFinish="$emit('onFinish')"/>
     </header>
     <div class="story__main-content">
-      <div v-if="active" v-html="obj.content"></div>
-      <Placeholder v-else-if="!active" :paragraphs="4"/>
-      <LoadingComponent v-else-if="loading"/>
+      <LoadingComponent v-if="loading"/>
+      <Placeholder v-else-if="!obj.content" :paragraphs="4"/>
+      <div v-else v-html="obj.content"></div>
     </div>
     <footer class="story__footer">
       <StoryBtn />

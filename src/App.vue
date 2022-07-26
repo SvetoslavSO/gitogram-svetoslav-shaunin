@@ -3,8 +3,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    ...mapActions({
+      fetchTrendings: 'users/fetchTrendings'
+    })
+  },
+  async created () {
+    await this.fetchTrendings();
+  }
 }
 </script>
 

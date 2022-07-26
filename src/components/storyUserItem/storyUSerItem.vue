@@ -14,7 +14,8 @@
         type: Object,
         required: true
       }
-    }
+    },
+    emits: ['onPress']
   }
 </script>
 
