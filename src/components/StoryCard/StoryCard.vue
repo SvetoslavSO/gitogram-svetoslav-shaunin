@@ -4,12 +4,12 @@
       <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username" @onFinish="$emit('onFinish')"/>
     </header>
     <div class="story__main-content">
-      <LoadingComponent v-if="loading"/>
+      <LoadingComponent class="loading-component" v-if="loading"/>
       <Placeholder v-else-if="!obj.content" :paragraphs="4"/>
       <div v-else v-html="obj.content"></div>
     </div>
     <footer class="story__footer">
-      <StoryBtn />
+      <StoryBtn :loading="obj.following.loading" @onFollow="$emit('onFollow', obj.id)"/>
     </footer>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
     Placeholder,
     LoadingComponent
   },
-  emits: ['onFinish'],
+  emits: ['onFinish', 'onFollow'],
   props: {
     obj: Object,
     active:Boolean,

@@ -1,12 +1,21 @@
 <template>
   <button ref="followBtn" :class="['story-btn', { active: followed}]" type="submit" @click="follow">
-    <span class="story-btn__text">{{followed ? "Unfollow" : "Follow"}} </span>
+    <LoadingComponent class="loading-component" v-if="loading"/>
+    <span class="story-btn__text" v-else>{{followed ? "Unfollow" : "Follow"}} </span>
   </button>
 </template>
 
 <script>
+import { LoadingComponent } from '../../components/LoadingComponent'
+
   export default {
     name:'StoryBtn',
+    components: {
+      LoadingComponent
+    },
+    props: {
+      loading:Boolean
+    },
     data () {
       return {
         followed :  false

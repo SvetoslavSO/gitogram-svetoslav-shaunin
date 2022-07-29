@@ -8,7 +8,7 @@
           </div>
         </button>
       </template>
-      <StoryCard v-bind:active="isActive" :obj="obj" :loading="loading" @onFinish="$emit('onProgressFinish')"/>
+      <StoryCard v-bind:active="isActive" :obj="obj" :loading="loading" @onFinish="$emit('onProgressFinish')" @onFollow="$emit('onFollow', obj.id)"/>
       <template v-if="active">
         <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
           <div class="right-arrow" >
@@ -30,7 +30,7 @@ export default {
     StoryCard,
     icon
   },
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow'],
   props: {
     obj:{
       type: Object,

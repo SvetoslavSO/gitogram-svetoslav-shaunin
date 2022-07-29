@@ -61,6 +61,17 @@
               username: obj.owner?.login,
               content: obj.readme
             }
+          },
+          async getUser () {
+            try {
+                const response = await fetch('https://github.com/login/oauth/authorize', {
+                    headers: `token ${localStorage.getItem('token')}`
+                })
+                const data = await response.json();
+                console.log(data)
+            } catch (e) {
+                console.log(e)
+            }
           }
         },
         data () {
