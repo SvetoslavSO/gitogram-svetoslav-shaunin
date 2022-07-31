@@ -1,15 +1,15 @@
 <template>
   <div class="story">
     <header class="story__header">
-      <StoryHeader v-bind:active="active" :author="obj.userAvatar" :authorName="obj.username" @onFinish="$emit('onFinish')"/>
+      <StoryHeader v-bind:active="active" :author="obj.owner?.avatar_url" :authorName="obj.owner?.login" @onFinish="$emit('onFinish')"/>
     </header>
     <div class="story__main-content">
-      <LoadingComponent class="loading-component" v-if="loading"/>
-      <Placeholder v-else-if="!obj.content" :paragraphs="4"/>
-      <div v-else v-html="obj.content"></div>
+      <LoadingComponent class="loading-component" v-if="obj.loading"/>
+      <Placeholder v-else-if="!obj.readme" :paragraphs="4"/>
+      <div v-else v-html="obj.readme"></div>
     </div>
     <footer class="story__footer">
-      <StoryBtn :loading="obj.following.loading" @onFollow="$emit('onFollow', obj.id)"/>
+      <StoryBtn :loading="obj.loading" :following="obj.status" @onFollow="$emit('onFollow')"/>
     </footer>
   </div>
 </template>

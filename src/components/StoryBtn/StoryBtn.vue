@@ -1,7 +1,7 @@
 <template>
-  <button ref="followBtn" :class="['story-btn', { active: followed}]" type="submit" @click="follow">
+  <button ref="followBtn" :class="['story-btn', { active: following}]" type="submit" @click="follow">
     <LoadingComponent class="loading-component" v-if="loading"/>
-    <span class="story-btn__text" v-else>{{followed ? "Unfollow" : "Follow"}} </span>
+    <span class="story-btn__text" v-else>{{following ? "Unfollow" : "Follow"}} </span>
   </button>
 </template>
 
@@ -14,18 +14,13 @@ import { LoadingComponent } from '../../components/LoadingComponent'
       LoadingComponent
     },
     props: {
-      loading:Boolean
-    },
-    data () {
-      return {
-        followed :  false
-      }
+      loading:Boolean,
+      following:Boolean
     },
     emits:['onFollow'],
     methods: {
       follow () {
-        this.followed = !this.followed
-        this.$emit('onFollow', this.followed)
+        this.$emit('onFollow')
       }
     }
   }

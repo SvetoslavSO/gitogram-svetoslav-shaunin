@@ -7,7 +7,7 @@
         </span>
         Star
       </button>
-      <div class="btn__desc">156k</div>
+      <div class="btn__desc">{{starsNumber}}</div>
     </li>
     <li class="btn">
       <button class="c-btn" @click="$emit('on')">
@@ -16,7 +16,7 @@
         </span>
         Fork
       </button>
-      <div class="btn__desc btn__desc--active">4</div>
+      <div class="btn__desc btn__desc--active">{{forksNumber}}</div>
     </li>
   </ul>
 </template>
@@ -29,6 +29,10 @@
     name: 'LibraryBtn',
     components: {
       icon
+    },
+    props: {
+      forksNumber: Number,
+      starsNumber: Number
     }
   }
 </script>

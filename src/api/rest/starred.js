@@ -16,7 +16,7 @@ export const starRepo = ({ repo, owner }) => makeRequest({
   method: 'put'
 });
 
-export const unstarRepo = ({ repo, owner }) => makeRequest({
+export const unStarRepo = ({ repo, owner }) => makeRequest({
   url: `/user/starred/${owner}/${repo}`,
   method: 'delete'
 });

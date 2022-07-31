@@ -8,7 +8,7 @@
           </div>
         </button>
       </template>
-      <StoryCard v-bind:active="isActive" :obj="obj" :loading="loading" @onFinish="$emit('onProgressFinish')" @onFollow="$emit('onFollow', obj.id)"/>
+      <StoryCard v-bind:active="isActive" :obj="obj" :loading="loading" @onFinish="$emit('onProgressFinish')" @onFollow="$emit('onFollow')"/>
       <template v-if="active">
         <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
           <div class="right-arrow" >

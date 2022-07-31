@@ -15,7 +15,7 @@
                 <ul class="stories-list">
                     <li class="stories-item" v-for="(user,index) in users" :key="user.id" ref="item">
                         <story-user-item
-                            :obj="getStoryData(user)"
+                            :obj="user"
                             @onPress="$router.push({name: 'stories', params: {initialSlide: index}})"
                         />
                     </li>
@@ -24,7 +24,7 @@
         </Header> 
     </div>
     <main class="maincontent">
-        <library :remarks="remarks" :lists="lists" />
+        <library :lists="starredRepos" />
     </main>
 </template>
 
@@ -37,7 +37,7 @@
     import lists from './lists.json'
     import { library } from '../../components/library'
     import { navigationMenu } from '../../components/navigation-menu'
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
 
     export default {
         name: 'welcome',
@@ -50,10 +50,14 @@
         },
         computed: {
             ...mapState({
-              users: (state) => state.users.data
+              users: (state) => state.users.data,
+              starredRepos: (state) => state.starredRepo.data
             })
         },
         methods: {
+          ...mapActions({
+            fetchReadme: 'users/fetchReadme'
+          }),
           getStoryData (obj) {
             return {
               id: obj.id,
@@ -81,6 +85,9 @@
                 shown: false,
                 lists
             }
+        },
+        beforeMount () {
+            this.getUser();
         }
     }
 </script>

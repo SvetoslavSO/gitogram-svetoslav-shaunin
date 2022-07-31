@@ -3,7 +3,6 @@
       <div class="application">
         <Expansion  
           :lists="lists"
-          :remarks="remarks"
         />
       </div>
     </div>
@@ -22,7 +21,6 @@
         required: true
       },
       lists :{
-        type: Array,
         required: true
       }
     }

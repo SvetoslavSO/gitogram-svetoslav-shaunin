@@ -1,9 +1,9 @@
 <template>
   <button class="c-story-user-item" @click="$emit('onPress')">
     <div class="avatar">
-      <img :src="obj.userAvatar" class="img"  alt="username avatar" />
+      <img :src="obj.owner?.avatar_url" class="img"  alt="username avatar" />
     </div>
-    <div class="username">{{ obj.username }}</div>
+    <div class="username">{{ obj.owner?.login }}</div>
   </button>
 </template>
 

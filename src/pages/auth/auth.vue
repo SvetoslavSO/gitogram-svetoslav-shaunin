@@ -13,7 +13,7 @@
 <script>
 import { icon } from '../../icons'
 import { AuthBtn } from '../../components/AuthBtn'
-import env from './env'
+import env from '../../../env'
 
 export default {
   name: 'auth',
@@ -28,7 +28,7 @@ export default {
       const params = new URLSearchParams();
 
       params.append('client_id', env.clientId);
-      params.append('scope', 'repo:status read:user');
+      params.append('scope', 'repo, user');
       window.location.href = `${githubAuthApi}?${params}`;
     }
   },

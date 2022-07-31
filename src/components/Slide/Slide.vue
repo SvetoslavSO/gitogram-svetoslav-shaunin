@@ -3,14 +3,14 @@
     <ul class="stories-list" ref="slider">
       <li class="stories-item" v-for="(user, ndx) in users" :key="user.id" ref="item" >
         <SliderElem
-          :obj="getStoryData(user)"
+          :obj="user"
           :active="slideNdx == ndx"
           :loading="slideNdx == ndx && loading"
           :btnsShown="activeBtns"
-          @onNextSlide="handleSlide(ndx + 1), next()"
-          @onPrevSlide="handleSlide(ndx - 1), prev()"
-          @onProgressFinish=" progress(ndx), handleSlide(ndx + 1)"
-          @onFollow="starRepo"
+          @onNextSlide="handleSlide(ndx + 1)"
+          @onPrevSlide="handleSlide(ndx - 1)"
+          @onProgressFinish=" handleSlide(ndx + 1)"
+          @onFollow="starRepoHandler(user)"
         />
       </li>
     </ul>
@@ -38,7 +38,8 @@ export default {
   },
   computed: {
     ...mapState({
-      users: (state) => state.users.data
+      users: (state) => state.users.data,
+      starredRepos: (state) => state.starredRepo.data
     }),
     activeBtns () {
       if (this.btnsShown === false) return []
@@ -50,17 +51,12 @@ export default {
   methods: {
     ...mapActions({
       fetchReadme: 'users/fetchReadme',
-      starRepo: 'users/starRepo'
+      starRepo: 'users/starRepo',
+      unStarRepo: 'users/unStarRepo',
+      checkStarred: 'users/checkStarred'
     }),
-    prev () {
-      console.log('prev')
-    },
-    next () {
-      console.log('next')
-    },
-    progress (ndx) {
-      console.log('progress')
-      console.log(this.slideNdx === ndx)
+    starRepoHandler (user) {
+      user.status ? this.unStarRepo(user.id) : this.starRepo(user.id)
     },
     async fetchReadmeForActiveSlide () {
       const { id, owner, name } = this.users[this.slideNdx];
@@ -80,7 +76,6 @@ export default {
       const item = this.$refs.item[slideNdx];
       const slideWidth = parseInt(getComputedStyle(item).getPropertyValue('width'), 10);
       this.slideNdx = slideNdx;
-      console.log(this.slideNdx)
       this.sliderPosition = -(slideWidth * slideNdx);
       slider.style.transform = `translateX(${this.sliderPosition}px)`
     },
@@ -102,6 +97,9 @@ export default {
       await this.loadReadme();
     }
   },
+  async beforeMount () {
+    await this.checkStarred(this.starredRepos)
+  },
   async mounted () {
     if (this.initialSlide) {
       this.slideNdx = this.initialSlide;
@@ -109,6 +107,7 @@ export default {
       await this.handleSlide(this.slideNdx)
     }
     await this.loadReadme()
+    console.log(this.users)
   }
 }
 </script>

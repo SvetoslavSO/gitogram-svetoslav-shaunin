@@ -8,11 +8,13 @@ export default {
   name: 'App',
   methods: {
     ...mapActions({
-      fetchTrendings: 'users/fetchTrendings'
+      fetchTrendings: 'users/fetchTrendings',
+      fetchStarredRepo: 'starredRepo/fetchStarredRepo'
     })
   },
   async created () {
     await this.fetchTrendings();
+    await this.fetchStarredRepo()
   }
 }
 </script>
