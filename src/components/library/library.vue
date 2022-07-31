@@ -16,10 +16,6 @@
       Expansion
     },
     props:{
-      remarks: { 
-        type: Array,
-        required: true
-      },
       lists :{
         required: true
       }

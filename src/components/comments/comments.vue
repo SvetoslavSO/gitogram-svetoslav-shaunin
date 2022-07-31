@@ -1,20 +1,19 @@
 <template>
   <div class="c-feed">
       <toggler @onToggle="toggle" />
-      <ul class="comments-list" v-if="shown">
-          <li class="comments-item" v-for="remark in remarks" :key="remark.id">
-              <comment
-                  :username="remark.username"
-                  :text="remark.text"
-              />
-          </li>
-      </ul>
+      <li class="comments-item" v-for="user in users.issues" :key="user.id">
+        <comment
+            :username="user.issues.title"
+            :text="user.issues.text"
+        />
+      </li>
   </div>
 </template>
 
 <script>
   import { comment } from '../../components/comment'
   import { toggler } from '../../components/toggler'
+  import { mapState, mapActions } from 'vuex';
 
   export default {
     name: 'Comments',
@@ -24,7 +23,7 @@
     },
     props:{
       remarks: { 
-          type: Array,
+          type: Number,
           required: true
         }
     },
@@ -33,12 +32,24 @@
         shown: false
       }
     },
+    computed: {
+      ...mapState({
+        users: (state) => state.users.data
+      })
+    },
     methods: {
-        toggle (isOpened) {
-            this.shown = isOpened
-        }
+      ...mapActions({
+        getIssues: 'users/getIssues'
+      }),
+      async toggle (isOpened) {
+        this.shown = isOpened;
+        await this.getIssues(this.remarks);
+        console.log(this.users[0])
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped src="./comments.scss"></style>
+
+console.log(this.users[0].issues)

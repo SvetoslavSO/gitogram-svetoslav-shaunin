@@ -36,21 +36,23 @@ export default
     },
     SET_STARRED: (state, payload) => {
       state.data.map((item) => {
-        return console.log(payload.some((repo) => {
+        return payload.some((repo) => {
           if (item.id === repo.id) {
             item.status = true
           } else {
             item.status = false
           }
           return item.status
-        }))
+        })
       })
      },
-     SET_ISSUES: (state, body, title) => {
-      state.data = state.data.map((repo) => {
-        repo.issues = {
-          body,
-          title
+     SET_ISSUES: (state, { repo, payload }) => {
+      state.data = state.data.map((item) => {
+        if (repo.id === item.id) {
+            repo.issues = {
+              body: payload.map((item) => item.body),
+              title: payload.map((item) => item.title)
+          }
         }
         return repo
       })
@@ -120,10 +122,8 @@ export default
     },
     async getIssues ({ commit, getters }, id) {
       const repo = getters.getRepoById(id)
-      console.log(repo)
       const { data } = await api.getIssues.getIssues({ owner: repo.owner.login, repo: repo.name })
-      console.log(data)
-      // commit('SET_ISSUES', data.body, data.title)
+      commit('SET_ISSUES', { repo, payload:data })
     }
   }
 }
