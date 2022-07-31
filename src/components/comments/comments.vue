@@ -1,10 +1,10 @@
 <template>
   <div class="c-feed">
       <toggler @onToggle="toggle" />
-      <li class="comments-item" v-for="user in users.issues" :key="user.id">
+      <li class="comments-item" v-for="(user, index) in users" :key="index">
         <comment
             :username="user.issues.title"
-            :text="user.issues.text"
+            :text="user.issues.body"
         />
       </li>
   </div>
