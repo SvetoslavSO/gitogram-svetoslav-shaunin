@@ -46,9 +46,12 @@ export default
         }))
       })
      },
-     SET_ISSUES: (state, payload) => {
+     SET_ISSUES: (state, body, title) => {
       state.data = state.data.map((repo) => {
-        console.log(payload)
+        repo.issues = {
+          body,
+          title
+        }
         return repo
       })
      }
@@ -117,8 +120,10 @@ export default
     },
     async getIssues ({ commit, getters }, id) {
       const repo = getters.getRepoById(id)
+      console.log(repo)
       const { data } = await api.getIssues.getIssues({ owner: repo.owner.login, repo: repo.name })
-      commit('SET_ISSUES', data)
+      console.log(data)
+      // commit('SET_ISSUES', data.body, data.title)
     }
   }
 }

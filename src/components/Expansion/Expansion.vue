@@ -9,13 +9,13 @@
           <div class="appDescription"><b>{{ list.language }}</b> {{ list.description }}</div>
           <LibraryBtn :forksNumber="list.forks_count" :starsNumber="list.stargazers_count"/>
         </div>
-        <div class="comments">
+        <!--<div class="comments">
           <comments
             :remarks="remarks"
           />
-        </div>
+        </div>-->
         <div class="date">
-          <!--{{ getIssues(list.id) }}-->
+          {{ getIssues(list.id) }}
         </div>
       </li>
   </ul>
@@ -24,15 +24,15 @@
 <script>
   import { Profile } from '../../components/Profile'
   import { LibraryBtn } from '../../components/LibraryBtn'
-  import { comments } from '../../components/comments'
+  // import { comments } from '../../components/comments'
   import { mapActions } from 'vuex';
 
   export default {
     name: 'Expansion',
     components: {
       Profile,
-      LibraryBtn,
-      comments
+      LibraryBtn
+      // comments
     },
     methods: {
         ...mapActions({
@@ -43,11 +43,11 @@
     props:{
       lists :{
         required: true
-      },
-      remarks:{
+      }
+      /* remarks:{
         type: Array,
         required: true
-      }
+      } */
     }
   }
 </script>
