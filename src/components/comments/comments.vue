@@ -3,8 +3,8 @@
       <toggler @onToggle="toggle" />
       <li class="comments-item" v-for="(user, index) in users" :key="index">
         <comment
-            :username="user.issues.title"
-            :text="user.issues.body"
+            :username="user.issues"
+            :text="user.issues"
         />
       </li>
   </div>
