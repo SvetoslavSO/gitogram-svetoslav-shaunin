@@ -1,10 +1,10 @@
 <template>
   <div class="c-feed">
       <toggler @onToggle="toggle" />
-      <li class="comments-item" v-for="(user, index) in users" :key="index">
+      <li class="comments-item" v-for="(user, index) in users" :key="user.index">
         <comment
-            :username="user.issues"
-            :text="user.issues"
+            :username="user.issues.user[index]"
+            :text="user.issues.title[index]"
         />
       </li>
   </div>
@@ -44,12 +44,9 @@
       async toggle (isOpened) {
         this.shown = isOpened;
         await this.getIssues(this.remarks);
-        console.log(this.users[0])
       }
     }
   }
 </script>
 
 <style lang="scss" scoped src="./comments.scss"></style>
-
-console.log(this.users[0].issues)

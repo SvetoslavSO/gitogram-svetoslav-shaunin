@@ -47,12 +47,11 @@ export default
       })
      },
      SET_ISSUES: (state, { repo, payload }) => {
-      console.log(payload)
       state.data = state.data.map((item) => {
         if (repo.id === item.id) {
             repo.issues = {
               title: payload.map((item) => item.title),
-              username: payload.map((item) => item.user.login)
+              user: payload.map((item) => item.user.login)
           }
         }
         return repo

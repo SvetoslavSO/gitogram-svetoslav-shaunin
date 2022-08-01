@@ -12,11 +12,9 @@
     name: 'Comment',
     props: {
       username: {
-        type: String,
         required: true
       },
       text: {
-        type: String,
         required: true
       }
     }
