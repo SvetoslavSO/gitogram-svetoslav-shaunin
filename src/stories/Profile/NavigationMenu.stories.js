@@ -1,7 +1,7 @@
-import navigationMenu from "../../components/navigation-menu/navigation-menu.vue"
+import navigationMenu from '../../components/navigation-menu/navigation-menu.vue'
 
-export default{
-  title: "Nav",
+export default {
+  title: 'Nav',
   components:  navigationMenu
 }
 

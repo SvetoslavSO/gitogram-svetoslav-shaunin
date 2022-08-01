@@ -1,7 +1,7 @@
-import ProgressLine from "../../components/ProgressLine/ProgressLine.vue"
+import ProgressLine from '../../components/ProgressLine/ProgressLine.vue'
 
-export default{
-  title: "ProgressLine",
+export default {
+  title: 'ProgressLine',
   components:  ProgressLine,
   argTypes:{
     onFinish:{
@@ -13,7 +13,7 @@ export default{
 
 const Progress = (args) => ({
   components: { ProgressLine },
-  data (){
+  data () {
     return { args }
   },
   template: `

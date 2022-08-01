@@ -1,7 +1,7 @@
-import toggler from "../../components/toggler/toggler.vue"
+import toggler from '../../components/toggler/toggler.vue'
 
-export default{
-  title: "TogglerBtn",
+export default {
+  title: 'TogglerBtn',
   components:  toggler,
   argTypes:{
     onToggle:{
@@ -13,7 +13,7 @@ export default{
 
 const Progress = (args) => ({
   components: { toggler },
-  data (){
+  data () {
     return { args }
   },
   template: `

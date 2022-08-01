@@ -1,7 +1,7 @@
-import StoryBtn from "../../components/StoryBtn/StoryBtn.vue"
+import StoryBtn from '../../components/StoryBtn/StoryBtn.vue'
 
-export default{
-  title: "StoryBtn",
+export default {
+  title: 'StoryBtn',
   components: { StoryBtn },
   argTypes:{
     onFollow:{
@@ -23,6 +23,6 @@ const FollowBtn = (args) => ({
 
 export const StoryButton = FollowBtn.bind({})
 
-/*StoryButton.story={
+/* StoryButton.story={
   name: "Время истории"
-}*/
+} */

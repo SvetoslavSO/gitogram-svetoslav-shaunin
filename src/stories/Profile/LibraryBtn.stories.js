@@ -1,7 +1,7 @@
-import LibraryBtn from "../../components/LibraryBtn/LibraryBtn.vue"
+import LibraryBtn from '../../components/LibraryBtn/LibraryBtn.vue'
 
-export default{
-  title: "LibraryBtn",
+export default {
+  title: 'LibraryBtn',
   components:  LibraryBtn,
   argTypes:{
     on:{
@@ -13,7 +13,7 @@ export default{
 
 const Progress = (args) => ({
   components: { LibraryBtn },
-  data (){
+  data () {
     return { args }
   },
   template: `

@@ -1,7 +1,7 @@
-import comment from "../../components/comment/comment.vue"
+import comment from '../../components/comment/comment.vue'
 
-export default{
-  title: "Com",
+export default {
+  title: 'Com',
   components: comment
 }
 

@@ -1,7 +1,7 @@
-import StoryCard from "../../components/StoryCard/StoryCard.vue"
+import StoryCard from '../../components/StoryCard/StoryCard.vue'
 
-export default{
-  title: "Card",
+export default {
+  title: 'Card',
   components: { StoryCard }
 }
 
@@ -12,6 +12,6 @@ export const card = () => ({
   `
 });
 
-card.story={
-  name: "Карточка"
+card.story = {
+  name: 'Карточка'
 }

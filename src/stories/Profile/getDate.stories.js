@@ -1,7 +1,7 @@
-import ServerRequest from "../../components/ServerRequest/ServerRequest.vue"
+import ServerRequest from '../../components/ServerRequest/ServerRequest.vue'
 
-export default{
-  title: "getDate",
+export default {
+  title: 'getDate',
   components: { ServerRequest }
 }
 
@@ -12,6 +12,6 @@ export const Req = () => ({
   `
 });
 
-Req.story={
-  name: "Обращение к серверу"
+Req.story = {
+  name: 'Обращение к серверу'
 }

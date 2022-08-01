@@ -1,8 +1,8 @@
-import comments from "../../components/comments/comments.vue"
+import comments from '../../components/comments/comments.vue'
 import remarks from '../../pages/welcome/remarks.json'
 
-export default{
-  title: "reviews",
+export default {
+  title: 'reviews',
   components: { comments }
 }
 
@@ -18,6 +18,6 @@ export const com = () => ({
   `
 });
 
-com.story={
-  name: "комментарии"
+com.story = {
+  name: 'комментарии'
 }

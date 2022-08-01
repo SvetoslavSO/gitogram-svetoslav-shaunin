@@ -1,7 +1,7 @@
-import Profile from "../../components/Profile/Profile.vue"
+import Profile from '../../components/Profile/Profile.vue'
 
-export default{
-  title: "profile",
+export default {
+  title: 'profile',
   components: { Profile }
 }
 
@@ -12,6 +12,6 @@ export const defaultView = () => ({
   `
 });
 
-defaultView.story={
-  name: "Стандартный вид"
+defaultView.story = {
+  name: 'Стандартный вид'
 }

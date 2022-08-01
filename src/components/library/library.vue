@@ -1,7 +1,7 @@
 <template>
     <div class="lib-container">
       <div class="application">
-        <Expansion  
+        <Expansion
           :lists="lists"
         />
       </div>

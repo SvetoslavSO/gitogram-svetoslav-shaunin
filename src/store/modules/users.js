@@ -1,7 +1,7 @@
 import * as api from '../../api'
 
 export default
-{ 
+{
   namespaced: true,
   state:{
     data:[]
@@ -21,10 +21,12 @@ export default
         return item;
       })
     },
-    SET_README:(state, payload) => {
+    SET_README:(state, { id, readme, loading, error }) => {
       state.data = state.data.map(repo => {
-        if (payload.id === repo.id) {
-          repo.readme = payload.content;
+        if (id === repo.id) {
+          repo.readme = readme;
+          repo.readme_loading = loading;
+          repo.error = error;
         }
         return repo;
       })
@@ -45,17 +47,6 @@ export default
           return item.status
         })
       })
-     },
-     SET_ISSUES: (state, { repo, payload }) => {
-      state.data = state.data.map((item) => {
-        if (repo.id === item.id) {
-            repo.issues = {
-              title: payload.map((item) => item.title),
-              user: payload.map((item) => item.user.login)
-          }
-        }
-        return repo
-      })
      }
   },
   actions:{
@@ -69,14 +60,29 @@ export default
       }
     },
     async fetchReadme ({ commit, getters }, { id, owner, repo }) {
-      const curRepo = getters.getRepoById(id);
-      if (curRepo.readme !== undefined) return
+      const _repo = getters.getRepoById(id);
+
+      if (_repo.readme) {
+        return
+      }
+
+      const options = {
+        id: _repo.id,
+        readme: '',
+        loading: true,
+        error: ''
+      }
+
+      commit('SET_README', options);
+
       try {
         const { data } = await api.readme.getReadme({ owner, repo });
-        commit('SET_README', { id, content:data });
+        options.readme = data;
       } catch (e) {
-        console.log(e)
-        throw e;
+        options.error = 'ERROR';
+      } finally {
+        options.loading = false;
+        commit('SET_README', options);
       }
     },
     async starRepo ({ commit, getters }, id) {
@@ -84,7 +90,7 @@ export default
       const options = { ...repo }
       commit('SET_FOLLOWING', {
         ...repo,
-        loading: true,
+        follow_loading: true,
         error: ''
       });
 
@@ -94,7 +100,7 @@ export default
       } catch (e) {
         options.error = 'ERROR';
       } finally {
-        options.loading = false;
+        options.follow_loading = false;
         commit('SET_FOLLOWING', options);
       }
     },
@@ -103,7 +109,7 @@ export default
       const options = { ...repo }
       commit('SET_FOLLOWING', {
         ...repo,
-        loading: true,
+        follow_loading: true,
         error: ''
       });
 
@@ -113,17 +119,12 @@ export default
       } catch (e) {
         options.error = 'ERROR';
       } finally {
-        options.loading = false;
+        options.follow_loading = false;
         commit('SET_FOLLOWING', options);
       }
     },
     async checkStarred ({ commit }, payload) {
       commit('SET_STARRED', payload)
-    },
-    async getIssues ({ commit, getters }, id) {
-      const repo = getters.getRepoById(id)
-      const { data } = await api.getIssues.getIssues({ owner: repo.owner.login, repo: repo.name })
-      commit('SET_ISSUES', { repo, payload:data })
     }
   }
 }

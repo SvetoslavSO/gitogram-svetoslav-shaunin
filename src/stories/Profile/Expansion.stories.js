@@ -1,9 +1,9 @@
-import Expansion from "../../components/Expansion/Expansion.vue"
+import Expansion from '../../components/Expansion/Expansion.vue'
 import remarks from '../../pages/welcome/remarks.json'
 import lists from '../../pages/welcome/lists.json'
 
-export default{
-  title: "Exp",
+export default {
+  title: 'Exp',
   components:  Expansion
 }
 

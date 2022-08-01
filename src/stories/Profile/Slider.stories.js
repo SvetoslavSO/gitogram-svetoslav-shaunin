@@ -1,7 +1,7 @@
-import SliderElem from "../../components/SliderElem/SliderElem.vue"
+import SliderElem from '../../components/SliderElem/SliderElem.vue'
 
-export default{
-  title: "SliderElement",
+export default {
+  title: 'SliderElement',
   components: { SliderElem }
 }
 
@@ -12,6 +12,6 @@ export const SliderElement = () => ({
   `
 });
 
-SliderElement.story={
-  name: "Карточка с контролами"
+SliderElement.story = {
+  name: 'Карточка с контролами'
 }

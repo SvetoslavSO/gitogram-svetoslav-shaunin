@@ -1,7 +1,7 @@
-import storyUSerItem from "../../components/storyUserItem/storyUserItem.vue"
+import storyUSerItem from '../../components/storyUserItem/storyUserItem.vue'
 
-export default{
-  title: "UserItem",
+export default {
+  title: 'UserItem',
   components:  storyUSerItem
 }
 

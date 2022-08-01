@@ -1,7 +1,7 @@
-import StoryHeader from "../../components/StoryHeader/StoryHeader.vue"
+import StoryHeader from '../../components/StoryHeader/StoryHeader.vue'
 
-export default{
-  title: "StoryHeader",
+export default {
+  title: 'StoryHeader',
   components: { StoryHeader }
 }
 
@@ -12,6 +12,6 @@ export const StoryHead = () => ({
   `
 });
 
-StoryHead.story={
-  name: "Заголовок истории"
+StoryHead.story = {
+  name: 'Заголовок истории'
 }
