@@ -1,13 +1,19 @@
 <template>
-  <div class="auth__logo">
-    <icon name='logo'/>
+  <div class="wrapper">
+    <div class="left__column">
+      <div class="auth__logo">
+        <icon name='logo'/>
+      </div>
+      <div class="auth__desc">
+        More than just one repository.
+        This is our digital world.
+      </div>
+      <AuthBtn @click="getCode()"/>
+    </div>
+    <div class="right__column">
+      <img src="../../assets/authImage.png" alt="">
+      </div>
   </div>
-  <div class="auth__desc">
-    More than just one repository.
-    This is our digital world.
-  </div>
-  <AuthBtn @click="getCode()"/>
-  <img src="../../assets/authImage.png" alt="">
 </template>
 
 <script>
@@ -59,3 +65,5 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped src="./auth.scss"></style>

@@ -1,20 +1,17 @@
 <template>
-  <div class="c-feed">
-      <toggler @onToggle="toggle" />
-      <li class="comments-item" v-for="(user, index) in users" :key="user.index">
-        <comment
-            :username="user.issues.user[index]"
-            :text="user.issues.title[index]"
-        />
+  <toggler @onToggle="toggle" />
+  <div v-if="shown && repo.loading">Loading...</div>
+  <div v-else-if="shown && repo.issues && !repo.issues.length">No data</div>
+  <ul class="c-feed" v-else-if="shown">
+      <li class="comments-item" v-for="issue in (repo.issues ?? [])" :key="issue.id">
+        <comment :issue="issue"/>
       </li>
-  </div>
+  </ul>
 </template>
-
 <script>
   import { comment } from '../../components/comment'
   import { toggler } from '../../components/toggler'
-  import { mapState, mapActions } from 'vuex';
-
+  import { mapGetters, mapActions } from 'vuex';
   export default {
     name: 'Comments',
     components: {
@@ -22,7 +19,7 @@
       comment
     },
     props:{
-      remarks: { 
+      remarks: {
           type: Number,
           required: true
         }
@@ -33,13 +30,16 @@
       }
     },
     computed: {
-      ...mapState({
-        users: (state) => state.users.data
-      })
+      ...mapGetters({
+        get_issues: 'starredRepo/getRepoById'
+      }),
+      repo () {
+        return this.get_issues(this.remarks)
+      }
     },
     methods: {
       ...mapActions({
-        getIssues: 'users/getIssues'
+        getIssues: 'starredRepo/getIssues'
       }),
       async toggle (isOpened) {
         this.shown = isOpened;
@@ -48,5 +48,4 @@
     }
   }
 </script>
-
 <style lang="scss" scoped src="./comments.scss"></style>

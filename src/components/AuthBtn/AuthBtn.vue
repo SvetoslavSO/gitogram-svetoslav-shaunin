@@ -1,5 +1,5 @@
 <template>
-  <button type="submit">
+  <button type="submit" class="auth-btn">
       <div class="button__text">Authorize with github</div>
       <div class="octocat__icon">
         <icon name='octocat'/>
@@ -16,3 +16,5 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped src="./AuthBtn.scss"></style>

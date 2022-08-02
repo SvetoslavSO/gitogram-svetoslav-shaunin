@@ -42,6 +42,11 @@ router.beforeEach(async (to, from, next) => {
   } catch (e) {
     next({ name: 'auth' });
   }
+
+  const storiesRoute = to.name === 'stories';
+  if (storiesRoute) {
+    from.name === undefined ? next({ name: 'main' }) : next()
+  }
 });
 
 export default router;

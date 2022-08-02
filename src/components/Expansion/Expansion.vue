@@ -19,13 +19,11 @@
       </li>
   </ul>
 </template>
-
 <script>
   import { Profile } from '../../components/Profile'
   import { LibraryBtn } from '../../components/LibraryBtn'
   import { comments } from '../../components/comments'
   import { mapActions } from 'vuex';
-
   export default {
     name: 'Expansion',
     components: {
@@ -45,5 +43,4 @@
     }
   }
 </script>
-
 <style lang="scss" scoped src="./Expansion.scss"></style>

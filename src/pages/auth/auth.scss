@@ -1,0 +1,32 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.auth{
+  &__content{
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+  &__logo{
+    width: 200px;
+    margin-bottom: 24px;
+  }
+  &__desc{
+    color: #6f6f6f;
+    font-size: 18px;
+    line-height: 1.42;
+    max-width: 250px;
+    margin-bottom: 54px;
+  }
+}
+
+.right__column{
+  right: 0;
+  position: absolute;
+}
+
+.left__column{
+  margin-left: 100px;
+}

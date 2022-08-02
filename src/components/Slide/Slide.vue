@@ -53,7 +53,8 @@ export default {
       fetchReadme: 'users/fetchReadme',
       starRepo: 'users/starRepo',
       unStarRepo: 'users/unStarRepo',
-      checkStarred: 'users/checkStarred'
+      checkStarred: 'users/checkStarred',
+      fetchTrendings: 'users/fetchTrendings'
     }),
     starRepoHandler (user) {
       user.status ? this.unStarRepo(user.id) : this.starRepo(user.id)
@@ -105,6 +106,9 @@ export default {
       this.slideNdx = this.initialSlide;
       // const ndx = this.users.findIndex(item => item.id === this.initialSlide);
       await this.handleSlide(this.slideNdx)
+    } else if (this.initialSlide === 0) {
+      await this.fetchTrendings();
+      await this.checkStarred(this.starredRepos)
     }
     await this.loadReadme()
     console.log(this.users)
