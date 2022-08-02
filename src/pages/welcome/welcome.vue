@@ -8,6 +8,7 @@
           </div>
           <navigation-menu
             :photo="authUser.userAvatar"
+            @onLogout="onLogout()"
           />
         </div>
       </template>
@@ -29,7 +30,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 import { Header } from '../../components/Header'
 import { icon } from '../../icons'
 import { storyUserItem } from '../../components/storyUserItem'
@@ -58,7 +58,8 @@ export default {
   methods: {
     ...mapActions({
       fetchReadme: 'users/fetchReadme',
-      getUser: 'authUser/getUser'
+      getUser: 'authUser/getUser',
+      logout: 'authUser/logout'
     }),
     getStoryData (obj) {
       return {
@@ -67,6 +68,9 @@ export default {
         username: obj.owner?.login,
         content: obj.readme
       }
+    },
+    onLogout () {
+      this.logout()
     }
   },
   data () {

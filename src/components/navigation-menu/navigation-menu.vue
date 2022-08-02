@@ -11,7 +11,7 @@
           </div>
       </li>
       <li class="navigation-menu__item">
-          <div class="icon">
+          <div class="icon" @click="logout">
               <icon name="logout"/>
           </div>
       </li>
@@ -25,10 +25,16 @@
     components: {
       icon 
     },
+    emits: ['onLogout'],
     props:{
       photo:{
         type : String,
         require: true
+      }
+    },
+    methods:{
+      logout () {
+        this.$emit('onLogout')
       }
     }
   }
