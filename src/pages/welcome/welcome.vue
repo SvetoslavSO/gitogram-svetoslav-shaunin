@@ -7,7 +7,7 @@
             <icon name="logo"/>
           </div>
           <navigation-menu
-            photo="https://picsum.photos/200/300"
+            :photo="authUser.userAvatar"
           />
         </div>
       </template>
@@ -51,12 +51,14 @@ export default {
   computed: {
     ...mapState({
       users: (state) => state.users.data,
-      starredRepos: (state) => state.starredRepo.data
+      starredRepos: (state) => state.starredRepo.data,
+      authUser: (state) => state.authUser.data
     })
   },
   methods: {
     ...mapActions({
-      fetchReadme: 'users/fetchReadme'
+      fetchReadme: 'users/fetchReadme',
+      getUser: 'authUser/getUser'
     }),
     getStoryData (obj) {
       return {
@@ -64,14 +66,6 @@ export default {
         userAvatar: obj.owner?.avatar_url,
         username: obj.owner?.login,
         content: obj.readme
-      }
-    },
-    async getUser () {
-      try {
-        // axios.defaults.headers.Authorization = `token ${localStorage.getItem('token')}`
-        // const { data } = await axios('https://api.github.com/user')
-      } catch (e) {
-        console.log(e)
       }
     }
   },
