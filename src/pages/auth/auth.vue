@@ -57,7 +57,6 @@ export default {
         const { token } = await response.json();
         localStorage.setItem('token', token);
         this.$router.replace({ name: 'main' })
-        console.log(token)
       } catch (e) {
         console.log(e)
       }

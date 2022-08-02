@@ -21,11 +21,14 @@ export default
     async getUser ({ commit }) {
       try {
         const { data } = await api.authUser.getAuthUser()
-        console.log(data)
         commit('SET_USER', data)
       } catch (e) {
         console.log(e)
       }
+    },
+    async logout () {
+      localStorage.removeItem('token');
+      window.location.reload();
     }
   }
 }

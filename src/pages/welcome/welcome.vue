@@ -8,6 +8,7 @@
           </div>
           <navigation-menu
             :photo="authUser.userAvatar"
+            @onLogout="onLogout()"
           />
         </div>
       </template>
@@ -57,7 +58,9 @@ export default {
   methods: {
     ...mapActions({
       fetchReadme: 'users/fetchReadme',
-      getUser: 'authUser/getUser'
+      fetchStarredRepos: 'starredRepo/fetchStarredRepo',
+      getUser: 'authUser/getUser',
+      logout: 'authUser/logout'
     }),
     getStoryData (obj) {
       return {
@@ -66,6 +69,9 @@ export default {
         username: obj.owner?.login,
         content: obj.readme
       }
+    },
+    onLogout () {
+      this.logout()
     }
   },
   data () {
@@ -76,8 +82,9 @@ export default {
       lists
     }
   },
-  beforeMount () {
-    this.getUser();
+  async beforeMount () {
+    await this.getUser();
+    await this.fetchStarredRepos()
   }
 }
 </script>

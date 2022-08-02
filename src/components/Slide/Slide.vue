@@ -111,7 +111,6 @@ export default {
       await this.checkStarred(this.starredRepos)
     }
     await this.loadReadme()
-    console.log(this.users)
   }
 }
 </script>
