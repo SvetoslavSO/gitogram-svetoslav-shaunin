@@ -21,7 +21,6 @@ export default
     async getUser ({ commit }) {
       try {
         const { data } = await api.authUser.getAuthUser()
-        console.log(data)
         commit('SET_USER', data)
       } catch (e) {
         console.log(e)

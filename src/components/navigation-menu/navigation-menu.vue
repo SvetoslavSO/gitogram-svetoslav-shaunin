@@ -20,7 +20,6 @@
 
 <script>
   import { icon } from '../../icons'
-
   export default {
     components: {
       icon 

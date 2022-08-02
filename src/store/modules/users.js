@@ -33,7 +33,6 @@ export default
     },
     SET_FOLLOWING: (state, payload) => {
       state.data = state.data.map((repo) => {
-        console.log('followed')
         return payload.id === repo.id ? payload : repo
       })
     },

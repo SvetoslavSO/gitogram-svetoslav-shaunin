@@ -58,6 +58,7 @@ export default {
   methods: {
     ...mapActions({
       fetchReadme: 'users/fetchReadme',
+      fetchStarredRepos: 'starredRepo/fetchStarredRepo',
       getUser: 'authUser/getUser',
       logout: 'authUser/logout'
     }),
@@ -81,8 +82,9 @@ export default {
       lists
     }
   },
-  beforeMount () {
-    this.getUser();
+  async beforeMount () {
+    await this.getUser();
+    await this.fetchStarredRepos()
   }
 }
 </script>

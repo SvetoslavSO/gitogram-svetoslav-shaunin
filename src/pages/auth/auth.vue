@@ -20,7 +20,6 @@
 import { icon } from '../../icons'
 import { AuthBtn } from '../../components/AuthBtn'
 import env from '../../../env'
-
 export default {
   name: 'auth',
   components: {
@@ -30,9 +29,7 @@ export default {
   methods:{
     getCode () {
       const githubAuthApi = 'https://github.com/login/oauth/authorize';
-
       const params = new URLSearchParams();
-
       params.append('client_id', env.clientId);
       params.append('scope', 'repo, user');
       window.location.href = `${githubAuthApi}?${params}`;
@@ -40,7 +37,6 @@ export default {
   },
   async created () {
     const code = new URLSearchParams(window.location.search).get('code');
-
     if (code) {
       try {
         const response = await fetch('https://webdev-api.loftschool.com/github', {
@@ -57,7 +53,6 @@ export default {
         const { token } = await response.json();
         localStorage.setItem('token', token);
         this.$router.replace({ name: 'main' })
-        console.log(token)
       } catch (e) {
         console.log(e)
       }

@@ -20,7 +20,6 @@
 <script>
 import { SliderElem } from '../../components/SliderElem'
 import { mapState, mapActions } from 'vuex';
-
 export default {
   components : { SliderElem },
   data () {
@@ -111,7 +110,6 @@ export default {
       await this.checkStarred(this.starredRepos)
     }
     await this.loadReadme()
-    console.log(this.users)
   }
 }
 </script>
