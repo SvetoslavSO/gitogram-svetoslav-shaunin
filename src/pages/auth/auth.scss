@@ -1,9 +1,33 @@
 .wrapper{
   display: flex;
   align-items: center;
+  @include big-tablets{
+    flex-direction: column;
+  }
 }
 
 .auth{
+  &__phone{
+    display: none;
+    @include phones{
+      display: block;
+      margin-top: 30px;
+    }
+  }
+  &__comp{
+    @include big-tablets{
+      display: none;
+    }
+  }
+  &__tablet{
+    display: none;
+    @include big-tablets {
+      display: block;
+    }
+    @include phones{
+      display: none;
+    }
+  }
   &__content{
     display: flex;
     flex: 1;
@@ -25,8 +49,19 @@
 .right__column{
   right: 0;
   position: absolute;
+  @include big-tablets{
+    bottom: 0;
+    right: auto;
+  }
 }
 
 .left__column{
   margin-left: 100px;
+  @include big-tablets{
+    margin-left: 0;
+    margin-top: 150px;
+  }
+  @include phones {
+    margin-top: 50px;
+  }
 }

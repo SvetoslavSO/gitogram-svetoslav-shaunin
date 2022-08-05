@@ -1,5 +1,8 @@
 <template>
   <div class="wrapper">
+    <div class="auth__phone">
+      <img src="../../assets/auth-phones.png" alt="">
+    </div>
     <div class="left__column">
       <div class="auth__logo">
         <icon name='logo'/>
@@ -11,8 +14,13 @@
       <AuthBtn @click="getCode()"/>
     </div>
     <div class="right__column">
-      <img src="../../assets/authImage.png" alt="">
+      <div class="auth__comp">
+        <img src="../../assets/authImage.png" alt="">
       </div>
+      <div class="auth__tablet">
+        <img src="../../assets/auth-tablet.png" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
