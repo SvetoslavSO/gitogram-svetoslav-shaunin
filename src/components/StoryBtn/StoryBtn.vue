@@ -15,7 +15,8 @@ import { LoadingComponent } from '../../components/LoadingComponent'
     },
     props: {
       loading:Boolean,
-      following:Boolean
+      following:Boolean,
+      width: String
     },
     emits:['onFollow'],
     methods: {

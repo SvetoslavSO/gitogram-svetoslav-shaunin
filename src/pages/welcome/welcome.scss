@@ -1,4 +1,5 @@
 .stories-list{
+  overflow-y: scroll;
   white-space: nowrap;
 }
 
@@ -12,9 +13,16 @@
 
 .logo{
   width: 174px;
+  cursor: pointer;
 }
 
 .header{
   justify-content: space-between;
   display: flex;
+}
+
+.maincontent{
+  @include tablets{
+    margin: 10px;
+  }
 }

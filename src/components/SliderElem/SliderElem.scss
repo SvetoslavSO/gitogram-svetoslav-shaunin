@@ -13,6 +13,9 @@
   &:hover{
     color: #31AE54;
   }
+  @include phones{
+    margin: 0;
+  }
 }
 
 .card-content{
@@ -42,6 +45,9 @@
   border: solid black 3px;
   &:hover{
     color: #31AE54;
+  }
+  @include phones{
+    margin: 0;
   }
 }
 

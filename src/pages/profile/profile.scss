@@ -1,0 +1,59 @@
+.logo{
+  width: 174px;
+  cursor: pointer;
+}
+
+.container{
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header{
+  justify-content: space-between;
+  display: flex;
+}
+
+.telephone__profile{
+  display: none;
+  @include tablets{
+    display: unset;
+  }
+}
+
+.repositories__content{
+  display: flex;
+  @include tablets{
+    display: unset;
+  }
+}
+
+.profile{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items:  baseline;
+  @include tablets{
+    display: none;
+  }
+  &__content{
+    align-self: flex-start;
+  }
+  &__desc{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+}
+
+.repositories{
+  flex: 1.8;
+  word-break: break-word ;
+  @include tablets{
+    margin: 10px;
+  }
+  &__desc{
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 37px;
+  }
+}

@@ -1,8 +1,8 @@
 <template>
   <div class="c-comment">
     <p>
-      <span class="username">{{ issue.title }}</span>
-      {{issue.body}}
+      <span class="username">{{ user }}</span>
+      {{body}}
     </p>
   </div>
 </template>
@@ -11,8 +11,12 @@
   export default {
     name: 'Comment',
     props: {
-      issue: {
-        type: Object,
+      user:{
+        type: String,
+        required: true
+      },
+      body: {
+        type: String,
         required: true
       }
     }

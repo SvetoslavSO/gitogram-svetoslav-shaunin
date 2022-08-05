@@ -19,44 +19,30 @@
 <script>
 import { icon } from '../../icons'
 import { AuthBtn } from '../../components/AuthBtn'
-import env from '../../../env'
+import { mapState, mapActions } from 'vuex';
 export default {
   name: 'auth',
   components: {
     icon,
     AuthBtn
   },
+  computed: {
+    ...mapState({
+      authUser: (state) => state.authUser.data
+    })
+  },
   methods:{
-    getCode () {
-      const githubAuthApi = 'https://github.com/login/oauth/authorize';
-      const params = new URLSearchParams();
-      params.append('client_id', env.clientId);
-      params.append('scope', 'repo, user');
-      window.location.href = `${githubAuthApi}?${params}`;
-    }
+    ...mapActions({
+      getCode: 'authUser/login',
+      getToken: 'authUser/setTokenToLS'
+    })
   },
   async created () {
-    const code = new URLSearchParams(window.location.search).get('code');
-    if (code) {
-      try {
-        const response = await fetch('https://webdev-api.loftschool.com/github', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            clientId: env.clientId,
-            code,
-            clientSecret: env.clientSecret
-          })
-        })
-        const { token } = await response.json();
-        localStorage.setItem('token', token);
-        this.$router.replace({ name: 'main' })
-      } catch (e) {
-        console.log(e)
-      }
-    }
+    await this.getToken()
+    this.$router.replace({ name: 'main' })
+  },
+  async getCode () {
+    await this.getCode()
   }
 }
 </script>

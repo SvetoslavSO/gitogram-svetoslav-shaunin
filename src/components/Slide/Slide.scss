@@ -5,11 +5,20 @@
   left: 50%;
   margin-left: -200px;
   transition: .4s;
+  @include phones{
+    margin-left: -140px;
+  }
 }
 
 .stories-item{
   display: flex;
   width: 540px;
+  @include tablets{
+    width: 490px;
+  }
+  @include phones{
+    width: 370px;
+  }
 }
 
 .stories-container{

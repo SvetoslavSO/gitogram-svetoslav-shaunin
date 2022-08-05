@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-window">
+  <div :class="['loading-window', color]">
     <div class="loading-icon">
       <icon name="loading" />
     </div>
@@ -11,6 +11,9 @@
 
 export default {
   name: 'LoadingComponent',
+  props: {
+    color: String
+  },
   components:{
     icon
   }

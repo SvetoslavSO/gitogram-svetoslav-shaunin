@@ -3,6 +3,13 @@
   flex-direction: column;
   width: 375px;
   height: 677px;
+  @include tablets{
+    width: 375px;
+  }
+  @include phones{
+    width: 250px;
+    height: 550px;
+  }
   &__main-content{
     background: #FCFCFC;
     flex:1;

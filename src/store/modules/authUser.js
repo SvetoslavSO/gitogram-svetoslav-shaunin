@@ -6,14 +6,19 @@ export default
   state: {
     data: {
       username: '',
-      userAvatar: ''
+      userAvatar: '',
+      userNumberOfRepos:'',
+      company: '',
+      following:{}
     }
   },
   mutations:{
     SET_USER : (state, data) => {
       state.data = {
         username: data.login,
-        userAvatar: data.avatar_url
+        userAvatar: data.avatar_url,
+        userNumberOfRepos: data.public_repos,
+        company: data.company
       }
     }
   },
@@ -29,6 +34,13 @@ export default
     async logout () {
       localStorage.removeItem('token');
       window.location.reload();
+    },
+    async login () {
+      const { data } = await api.authUser.getCode()
+      return data.token
+    },
+    async setTokenToLS () {
+      await api.authUser.getToken()
     }
   }
 }

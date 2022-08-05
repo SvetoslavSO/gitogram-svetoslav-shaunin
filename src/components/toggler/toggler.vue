@@ -14,6 +14,7 @@
     components: {
       icon
     },
+    emits: ['onToggle'],
     data () {
       return {
         isOpened: false

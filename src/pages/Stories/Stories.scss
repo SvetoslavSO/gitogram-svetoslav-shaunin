@@ -9,6 +9,9 @@
 .stories-header{
   display: flex;
   padding: 100px;
+  @include tablets{
+    padding: 30px;
+  }
 }
 
 .x-container{

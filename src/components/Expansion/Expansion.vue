@@ -11,7 +11,7 @@
         </div>
         <div class="comments">
           <comments
-            :remarks="list.id"
+            :repo="list" :issues="list.issues" :loading="list.loading" @onToggle="onToggle(list.id)"
           />
         </div>
         <div class="date">
@@ -31,10 +31,15 @@
       LibraryBtn,
       comments
     },
+    emits: ['onToggle'],
     methods: {
         ...mapActions({
-        fetchReadme: 'users/fetchReadme'
-      })
+        fetchReadme: 'users/fetchReadme',
+        getIssues: 'starredRepo/getIssues'
+      }),
+      async onToggle (id) {
+        await this.getIssues(id);
+      }
     },
     props:{
       lists :{

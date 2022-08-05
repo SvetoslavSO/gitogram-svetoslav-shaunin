@@ -37,9 +37,18 @@ export default {
     }
   },
   actions: {
-    async fetchStarredRepo ({ commit }) {
+    async fetchStarredRepo ({ commit }, { limit }) {
       try {
-        const { data } = await api.starred.getStarredRepo({ limit : 10 })
+        const { data } = await api.starred.getStarredRepo({ limit })
+        commit('SET_STARRED_REPOS', data)
+      } catch (e) {
+        console.log(e)
+        throw e;
+      }
+    },
+    async fetchAllStarredRepo ({ commit }) {
+      try {
+        const { data } = await api.starred.getAllStarredRepo()
         commit('SET_STARRED_REPOS', data)
       } catch (e) {
         console.log(e)

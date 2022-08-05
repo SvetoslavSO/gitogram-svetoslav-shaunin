@@ -1,0 +1,22 @@
+.story-btn{
+  padding: 11px 20px;
+  background: #9E9E9E;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 125px;
+  font-size: 16px;
+  cursor: pointer;
+  &__text{
+    font-weight: bold;
+  }
+}
+
+.story-btn.active{
+  background: #31AE54;
+}
+
+.loading-component{
+  width: 18px;
+  margin: auto;
+}

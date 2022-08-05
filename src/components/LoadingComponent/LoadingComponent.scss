@@ -1,5 +1,6 @@
 .loading{
   &-icon{
+    width: 50px;
     animation: circle 1s infinite;
   }
   &-window{
@@ -7,6 +8,9 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    &.green{
+      color: #31AE54;
+    }
   }
 }
 

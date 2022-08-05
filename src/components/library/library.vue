@@ -14,6 +14,7 @@
     components : {
       Expansion
     },
+    emits: ['onToggle'],
     props:{
       lists :{
         required: true

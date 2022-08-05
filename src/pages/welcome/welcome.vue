@@ -4,7 +4,7 @@
       <template #navigation>
         <div class="header">
           <div class="logo">
-            <icon name="logo"/>
+            <icon name="logo" @click="$router.push('/')"/>
           </div>
           <navigation-menu
             :photo="authUser.userAvatar"
@@ -25,7 +25,7 @@
     </Header>
   </div>
   <main class="maincontent">
-    <library :lists="starredRepos"/>
+    <library :lists="starredRepos" />
   </main>
 </template>
 
@@ -33,12 +33,11 @@
 import { Header } from '../../components/Header'
 import { icon } from '../../icons'
 import { storyUserItem } from '../../components/storyUserItem'
-import stories from './data.json'
-import remarks from './remarks.json'
-import lists from './lists.json'
 import { library } from '../../components/library'
 import { navigationMenu } from '../../components/navigation-menu'
-import { mapState, mapActions } from 'vuex';
+import { useStore } from 'vuex';
+import { onBeforeMount, computed } from 'vue'
+
 export default {
   name: 'welcome',
   components: {
@@ -48,43 +47,26 @@ export default {
     library,
     navigationMenu
   },
-  computed: {
-    ...mapState({
-      users: (state) => state.users.data,
-      starredRepos: (state) => state.starredRepo.data,
-      authUser: (state) => state.authUser.data
+  setup () {
+    const { dispatch, state } = useStore();
+    const onLogout = () => {
+      dispatch('authUser/logout')
+    }
+    onBeforeMount(() => {
+      dispatch('authUser/getUser');
+      dispatch('starredRepo/fetchStarredRepo', { limit: 10 });
     })
-  },
-  methods: {
-    ...mapActions({
-      fetchReadme: 'users/fetchReadme',
-      fetchStarredRepos: 'starredRepo/fetchStarredRepo',
-      getUser: 'authUser/getUser',
-      logout: 'authUser/logout'
-    }),
-    getStoryData (obj) {
-      return {
-        id: obj.id,
-        userAvatar: obj.owner?.avatar_url,
-        username: obj.owner?.login,
-        content: obj.readme
-      }
-    },
-    onLogout () {
-      this.logout()
+    return {
+      users: computed(() => state.users.data),
+      starredRepos: computed(() => state.starredRepo.data),
+      authUser: computed(() => state.authUser.data),
+      onLogout
     }
   },
   data () {
     return {
-      stories,
-      remarks,
-      shown: false,
-      lists
+      shown: false
     }
-  },
-  async beforeMount () {
-    await this.getUser();
-    await this.fetchStarredRepos()
   }
 }
 </script>

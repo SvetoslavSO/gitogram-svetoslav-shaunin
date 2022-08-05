@@ -72,11 +72,24 @@ export default {
       }
     },
     moveSlider (slideNdx) {
+      let adaptive;
+      if (window.innerWidth <= 480) {
+        adaptive = 60
+      } else if (window.innerWidth <= 768) {
+        adaptive = 20
+      } else {
+        adaptive = 0
+      }
+      if (slideNdx === 0) {
+        adaptive = 0
+      }
       const slider = this.$refs.slider;
       const item = this.$refs.item[slideNdx];
       const slideWidth = parseInt(getComputedStyle(item).getPropertyValue('width'), 10);
+      console.log(slideWidth)
       this.slideNdx = slideNdx;
-      this.sliderPosition = -(slideWidth * slideNdx);
+      console.log(adaptive)
+      this.sliderPosition = -(slideWidth * slideNdx + adaptive);
       slider.style.transform = `translateX(${this.sliderPosition}px)`
     },
     async loadReadme () {

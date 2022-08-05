@@ -5,7 +5,7 @@
         <div class="x-container">
           <button class="logo">
             <div class="logo-icon">
-              <icon name="logo"/>
+              <icon name="logo" @click="$router.push('/')"/>
             </div>
           </button>
           <button class="close-btn">
