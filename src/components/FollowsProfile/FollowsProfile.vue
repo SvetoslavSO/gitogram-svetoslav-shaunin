@@ -5,7 +5,10 @@
     </div>
     <div class="author__desc">
       <div :class="['author__name', user]">{{ authorName }}</div>
-      <div class="author__repos" v-if="userRepos">{{ userRepos }} repositories</div>
+      <div class="change__menu">
+        <div :class="['author__repos', status ? 'active' : '']" v-if="userRepos" @click="$emit('changeStatusTrue')">{{ userRepos }} repositories</div>
+        <div :class="['author__followings', !status ? 'active' : '']" v-if="following" @click="$emit('changeStatusFalse')">{{following}} following</div>
+      </div>
       <div class="author__company">{{ company ? company : 'no company' }}</div>
     </div>
   </div>
@@ -14,6 +17,7 @@
 <script>
   export default {
     name: 'FollowsProfile',
+    emits: ['changeStatusTrue', 'changeStatusFalse'],
     props:{
       author:{
         type: String,
@@ -31,6 +35,12 @@
       },
       user: {
         type:String
+      },
+      following: {
+        type: Number
+      },
+      status: {
+        type: Boolean
       }
     }
   }

@@ -2,12 +2,12 @@
   <ul class="navigation-menu">
       <li class="navigation-menu__item">
           <div class="icon">
-              <icon name="home" @click="$router.push('/profile')"/>
+              <icon name="home" @click="$router.push('/')"/>
           </div>
       </li>
       <li class="navigation-menu__item">
           <div class="image">
-              <img class="profile__photo" :src="photo" @click="$router.push('/follows')"/>
+              <img class="profile__photo" :src="photo" @click="$router.push('/profile')"/>
           </div>
       </li>
       <li class="navigation-menu__item">

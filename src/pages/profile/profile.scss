@@ -57,3 +57,26 @@
     margin-bottom: 37px;
   }
 }
+
+.followings{
+  flex: 1.8;
+  &__desc{   
+    @include tablets{
+      display: none;
+    }
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 37px;
+  }
+}
+
+.following__content{
+  display: flex;
+  @include tablets{
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  @include phones{
+    margin: 10px;
+  }
+}

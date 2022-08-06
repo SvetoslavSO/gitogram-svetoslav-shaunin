@@ -9,7 +9,7 @@ export default
       userAvatar: '',
       userNumberOfRepos:'',
       company: '',
-      following:{}
+      following: ''
     }
   },
   mutations:{
@@ -18,12 +18,21 @@ export default
         username: data.login,
         userAvatar: data.avatar_url,
         userNumberOfRepos: data.public_repos,
-        company: data.company
+        company: data.company,
+        following: data.following,
+        status: true
+      }
+    },
+    SET_STATUS: (state, data) => {
+      if (data === true) {
+        state.data.status = false
+      } else {
+        state.data.status = true
       }
     }
   },
   actions: {
-    async getUser ({ commit }) {
+    async getUser ({ state, commit }) {
       try {
         const { data } = await api.authUser.getAuthUser()
         commit('SET_USER', data)
@@ -41,6 +50,9 @@ export default
     },
     async setTokenToLS () {
       await api.authUser.getToken()
+    },
+    async changeStatus ({ commit }, status) {
+      commit('SET_STATUS', status)
     }
   }
 }

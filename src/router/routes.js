@@ -1,7 +1,6 @@
 import { welcome } from '../pages/welcome';
 import { Stories } from '../pages/Stories';
 import { auth } from '../pages/auth';
-import { follows } from '../pages/follows';
 import { profile } from '../pages/profile';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
@@ -20,11 +19,6 @@ const routes = [
     path: '/auth',
     name: 'auth',
     component: auth
-  },
-  {
-    path: '/follows',
-    name: 'follows',
-    component: follows
   },
   {
     path: '/profile',

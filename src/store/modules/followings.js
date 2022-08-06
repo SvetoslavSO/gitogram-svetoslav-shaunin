@@ -21,7 +21,6 @@ export default
     },
     SET_UNFOLLOWING: (state, data) => {
       state.data = state.data.map((follow) => {
-        console.log(follow.login)
         if (follow.login === data) {
           follow.followed = false
         }
