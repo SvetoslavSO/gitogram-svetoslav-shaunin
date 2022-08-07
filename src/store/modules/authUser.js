@@ -9,7 +9,7 @@ export default
       userAvatar: '',
       userNumberOfRepos:'',
       company: '',
-      following: ''
+      following: 0
     }
   },
   mutations:{

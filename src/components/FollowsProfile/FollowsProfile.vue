@@ -6,8 +6,8 @@
     <div class="author__desc">
       <div :class="['author__name', user]">{{ authorName }}</div>
       <div class="change__menu">
-        <div :class="['author__repos', status ? 'active' : '']" v-if="userRepos" @click="$emit('changeStatusTrue')">{{ userRepos }} repositories</div>
-        <div :class="['author__followings', !status ? 'active' : '']" v-if="following" @click="$emit('changeStatusFalse')">{{following}} following</div>
+        <div :class="['author__repos', status ? 'active' : '']" v-if="userRepos" @click="$router.push('profile')">{{ userRepos }} repositories</div>
+        <div :class="['author__followings', !status ? 'active' : '']" v-if="profile" @click="$router.push('follows')">{{following}} following</div>
       </div>
       <div class="author__company">{{ company ? company : 'no company' }}</div>
     </div>
@@ -40,6 +40,9 @@
         type: Number
       },
       status: {
+        type: Boolean
+      },
+      profile: {
         type: Boolean
       }
     }

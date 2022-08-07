@@ -1,8 +1,8 @@
 <template>
   <div class="following__content">
-    <FollowsProfile :author="follow.avatar_url" :authorName="follow.login" :company="follow.type"/>
+    <FollowsProfile :author="follow.owner.avatar_url" :authorName="follow.owner.login" :company="follow.type"/>
     <div class="following__btn">
-      <FollowingBtn :following="follow.followed" @onUnfollow="$emit('onUnfollow')"/>
+      <FollowingBtn :following="follow.following" @onUnfollow="$emit('onUnfollow')"/>
     </div>
   </div>
 </template>

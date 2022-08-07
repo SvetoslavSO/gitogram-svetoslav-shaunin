@@ -8,21 +8,41 @@ export default
     loading: false
   },
   mutations:{
-    SET_FOLLOWING : (state, data) => {
-      state.data = data.map((follow) => {
-          follow.user = data.login
-          follow.avatar = data.avatar_url
-          follow.type = data.type
-          follow.id = data.id
-          follow.followed = true
-          return follow
-        }
-      )
+    SET_FOLLOWING : (state, starred) => {
+      state.data = starred.map((follow) => {
+        follow.user = follow.owner.login
+        follow.avatar = follow.owner.avatar_url
+        follow.type = follow.owner.type
+        follow.id = follow.owner.id
+        follow.following = false
+        return follow
+      })
+    },
+    SET_FOLLOWS: (state, payload) => {
+      state.data.map((item) => {
+        return payload.some((another) => {
+          if (item.owner.id === another.id) {
+            item.following = true
+          } else {
+            item.following = false
+          }
+          return item.following
+        })
+      })
     },
     SET_UNFOLLOWING: (state, data) => {
       state.data = state.data.map((follow) => {
-        if (follow.login === data) {
-          follow.followed = false
+        if (follow.owner.login === data) {
+          follow.following = false
+        }
+        return follow
+      })
+    }, 
+    SET_FOLLOW: (state, data) => {
+      state.data = state.data.map((follow) => {
+        if (follow.owner.login === data) {
+          console.log(data)
+          follow.following = true
         }
         return follow
       })
@@ -35,13 +55,17 @@ export default
     async getFollowings ({ state, commit }) {
       commit('SET_LOADING', true)
       try {
-        const { data } = await api.followings.follows();
+        const { data } = await api.starred.getAllStarredRepo();
         commit('SET_FOLLOWING', data)
       } catch (e) {
         console.log(e)
       } finally {
         commit('SET_LOADING', false)
       }
+    },
+    async checkFollowings ({ state, commit }) {
+      const { data } = await api.followings.follows();
+      commit('SET_FOLLOWS', data)
     },
     async unfollow ({ state, commit }, follow) {
       commit('SET_LOADING', true)  
@@ -56,14 +80,13 @@ export default
     },
     async follow ({ state, commit }, follow) {
       commit('SET_LOADING', true)
+      await commit('SET_FOLLOW', follow)
       try {
         await api.followings.follow(follow)
       } catch (e) {
         console.log(e)
       } finally {
         commit('SET_LOADING', false)
-        const { data } = await api.followings.follows();
-        commit('SET_FOLLOWING', data)
       }
     }
   }

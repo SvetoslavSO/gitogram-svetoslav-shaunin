@@ -2,6 +2,7 @@ import { welcome } from '../pages/welcome';
 import { Stories } from '../pages/Stories';
 import { auth } from '../pages/auth';
 import { profile } from '../pages/profile';
+import { follows } from '../pages/follows'
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: profile
+  },
+  {
+    path: '/follows',
+    name: 'follows',
+    component: follows
   }
 ]
 const router = createRouter({

@@ -49,6 +49,8 @@ export default {
     async fetchAllStarredRepo ({ commit }) {
       try {
         const { data } = await api.starred.getAllStarredRepo()
+        // console.log(data)
+        // data.map((item) => console.log(item.owner))
         commit('SET_STARRED_REPOS', data)
       } catch (e) {
         console.log(e)

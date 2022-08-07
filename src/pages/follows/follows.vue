@@ -19,7 +19,7 @@
         :userRepos="authUser.userNumberOfRepos"
         :company="authUser.company"
         :following="authUser.following"
-        :status="true"
+        :status="false"
         :profile="true"
         user="user"
         />
@@ -39,21 +39,23 @@
             :userRepos="authUser.userNumberOfRepos"
             :company="authUser.company"
             :following="authUser.following"
-            :status="true"
+            :status="false"
             :profile="true"
             user="user"/>
         </div>
       </div>
-      <div class="repositories">
-        <div class="repositories__desc">
-          Repositories
+      <div class="followings">
+        <div class="followings__content">
+          <div class="followings__desc">
+            Following
+          </div>
+          <LoadingComponent v-if="followLoadingFollows" color="green"/>
+          <ul class="followings__list" v-else v-for="follow in followings" :key="follow.id">
+            <li class="followings__item">
+              <FollowingByUsers :follow="follow" @onUnfollow="followHandler(follow)"/>
+            </li>
+          </ul>
         </div>
-        <LoadingComponent v-if="followLoadingRepos" color="green"/>
-        <ul class="repositories__list" v-else v-for="repos in userRepos" :key="repos.id">
-          <li class="repositories__item">
-            <UserRepos :repo="repos"/>
-          </li>
-        </ul>
       </div>
     </main>
   </div>
@@ -67,7 +69,7 @@ import { icon } from '../../icons'
 import { navigationMenu } from '../../components/navigation-menu'
 import { FollowsProfile } from '../../components/FollowsProfile'
 import { LoadingComponent } from '../../components/LoadingComponent'
-import { UserRepos } from '../../components/UserRepos'
+import { FollowingByUsers } from '../../components/FollowingByUsers'
 export default {
   name: 'profile',
   components: {
@@ -76,10 +78,24 @@ export default {
     icon,
     FollowsProfile,
     LoadingComponent,
-    UserRepos
+    FollowingByUsers
   },
   setup () {
     const { dispatch, state } = useStore();
+    const changeStatus = (isCorrect, userStatus) => {
+      if (isCorrect === !userStatus) {
+        dispatch('authUser/changeStatus', userStatus)
+      }
+    }
+    const followHandler = (follow) => {
+      follow.following ? onUnfollow(follow.owner.login) : onFollow(follow.owner.login)
+    }
+    const onUnfollow = (follow) => {
+      dispatch('followings/unfollow', follow)
+    }
+    const onFollow = (follow) => {
+      dispatch('followings/follow', follow)
+    }
     onBeforeMount(() => {
       dispatch('authUser/getUser');
       dispatch('starredRepo/fetchAllStarredRepo');
@@ -94,10 +110,14 @@ export default {
       userRepos: computed(() => state.userRepos.data),
       followings: computed(() => state.followings.data),
       followLoadingRepos: computed(() => state.userRepos.loading),
-      followLoadingFollows: computed(() => state.followings.loading)
+      followLoadingFollows: computed(() => state.followings.loading),
+      followHandler,
+      onUnfollow,
+      onFollow,
+      changeStatus
     }
   }
 }
 </script>
 
-<style lang="scss" scoped src="./profile.scss"></style>
+<style lang="scss" scoped src="./follows.scss"></style>
