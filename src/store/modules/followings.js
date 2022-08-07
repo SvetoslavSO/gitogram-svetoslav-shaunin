@@ -41,7 +41,6 @@ export default
     SET_FOLLOW: (state, data) => {
       state.data = state.data.map((follow) => {
         if (follow.owner.login === data) {
-          console.log(data)
           follow.following = true
         }
         return follow

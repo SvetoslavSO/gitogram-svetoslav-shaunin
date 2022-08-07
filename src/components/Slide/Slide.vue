@@ -86,9 +86,7 @@ export default {
       const slider = this.$refs.slider;
       const item = this.$refs.item[slideNdx];
       const slideWidth = parseInt(getComputedStyle(item).getPropertyValue('width'), 10);
-      console.log(slideWidth)
       this.slideNdx = slideNdx;
-      console.log(adaptive)
       this.sliderPosition = -(slideWidth * slideNdx + adaptive);
       slider.style.transform = `translateX(${this.sliderPosition}px)`
     },
